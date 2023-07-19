@@ -1,3 +1,5 @@
+@import "utils";
+
 $element-primary : #EB5440;
 $element-secondary : #4A4B4C;
 $element-tertiary-1 : #E8E8E8;
@@ -7,15 +9,22 @@ $element-background-2 : #FFFFFF;
 
 $text-primary : #000000;
 $text-secondary : #4A4B4C;
+$text-tertiary : #C3C3C3;
 $text-hyperlink : #4A4B4C;
 
 $font-primary: "Montserrat", sans-serif;
 $font-secondary: "Open Sans", sans-serif;
 $font-weight-bold: 700;
 $font-weight-semi-bold: 600;
-$font-weight-medium: 500;
-$font-weight-regular: 400;
+$font-weight-medium: 400;
 
+
+html, body, h1, h2 {
+  margin: 0;
+}
+html{
+  background-color: $element-background-1;
+}
 
 .element-color-primary {
   background-color: $element-primary;
@@ -67,10 +76,11 @@ h2 {
   font-size: 22px;
 }
 
-.header-active-menu, .button, .tabs, {
+.router-link-active.header-menu, .button, .tabs, {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
   font-size: 18px;
+  color: $text-primary;
 }
 
 // Montserrat semi-bold
@@ -87,10 +97,15 @@ h2 {
 }
 
 // Montserrat medium
-.header-inactive-menu{
+.header-menu{
   font-family: $font-primary;
   font-weight: $font-weight-medium;
   font-size: 18px;
+  color: $text-tertiary;
+}
+
+.header-menu{
+  text-decoration: none;
 }
 
 .empty-state-message{
@@ -114,15 +129,15 @@ h2 {
 }
 
 // Open Sans regular
-.body-text{
+html{
   font-family: $font-secondary;
-  font-weight: $font-weight-regular;
+  font-weight: $font-weight-medium;
   font-size: 18px;
 }
 
 .input-field{
     font-family: $font-secondary;
-    font-weight: $font-weight-regular;
+    font-weight: $font-weight-medium;
     font-size: 14px;
 }
 
@@ -160,7 +175,7 @@ h2 {
   }
 
   // Open Sans regular
-  .body-text{
+  html{
       font-size: 12px;
   }
 

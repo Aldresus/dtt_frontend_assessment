@@ -1,0 +1,27 @@
+.flex{
+  display: flex;
+}
+
+.justify-content-around{
+  justify-content: space-around;
+}
+
+.gap-2{
+  gap: 2rem;
+}
+
+.gap-3{
+  gap: 3rem;
+}
+
+.align-items-center{
+  align-items: center;
+}
+
+.no-drag{
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
