@@ -1,0 +1,132 @@
+$element-primary = #EB5440;
+$element-secondary = #4A4B4C;
+$element-tertiary-1 = #E8E8E8;
+$element-tertiary-2 = #C3C3C3;
+$element-background-1 = #F6F6F6;
+$element-background-2 = #FFFFFF;
+
+$text-primary = #000000;
+$text-secondary = #4A4B4C;
+$text-hyperlink = #4A4B4C;
+
+$font-primary: "Montserrat", sans-serif;
+$font-secondary: "Open Sans", sans-serif;
+$font-weight-bold: 700;
+$font-weight-semi-bold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+// Montserrat bold
+h1 {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: 32px;
+}
+
+h2 {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: 22px;
+}
+
+.header-active-menu, .button, .tabs, {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: 18px;
+}
+
+// Montserrat semi-bold
+.back-button-label{
+  font-family: $font-primary;
+  font-weight: $font-weight-semi-bold;
+  font-size: 16px;
+}
+
+.input-field-title{
+  font-family: $font-primary;
+  font-weight: $font-weight-semi-bold;
+  font-size: 14px;
+}
+
+// Montserrat medium
+.header-inactive-menu{
+  font-family: $font-primary;
+  font-weight: $font-weight-medium;
+  font-size: 18px;
+}
+
+.empty-state-message{
+    font-family: $font-primary;
+    font-weight: $font-weight-medium;
+    font-size: 18px;
+}
+
+.error-message{
+  font-family: $font-primary;
+  font-weight: $font-weight-medium;
+  font-style: italic;
+  font-size: 14px;
+}
+
+// Open Sans semi-bold
+.listing-info{
+  font-family: $font-secondary;
+  font-weight: $font-weight-semi-bold;
+  font-size: 16px;
+}
+
+// Open Sans regular
+.body-text{
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: 18px;
+}
+
+.input-field{
+    font-family: $font-secondary;
+    font-weight: $font-weight-regular;
+    font-size: 14px;
+}
+
+@media(max-width: 768px) {
+  // Montserrat bold
+  h1 {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  .button, .tabs, {
+    font-size: 12px;
+  }
+
+  // Montserrat semi-bold
+  .input-field-title{
+    font-size: 12px;
+  }
+
+  // Montserrat medium
+  .empty-state-message{
+    font-size: 14px;
+  }
+
+  .error-message{
+    font-size: 12px;
+  }
+
+  // Open Sans semi-bold
+  .listing-info{
+    font-size: 12px;
+  }
+
+  // Open Sans regular
+  .body-text{
+      font-size: 12px;
+  }
+
+  .input-field{
+      font-size: 12px;
+  }
+}
