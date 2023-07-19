@@ -8,7 +8,7 @@
       alt="DTT logo"
     />
     <router-link class="header-menu" to="/">
-      <span class="header-text">Houses</span>
+      <span class="header-text text-color-primary">Houses</span>
       <img
         class="header-icon header-home-icon"
         src="@/assets/icons/ic_mobile_navigarion_home@3x.png"
@@ -16,7 +16,7 @@
       />
     </router-link>
     <router-link class="header-menu" to="/about">
-      <span class="header-text">About</span>
+      <span class="header-text text-color-primary">About</span>
       <img
         class="header-icon header-info-icon"
         src="@/assets/icons/ic_mobile_navigarion_info@3x.png"
@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .header {
   height: 50px;
-  padding: 10px;
+  padding: 10px 15rem;
 }
 
 .header-gap {
