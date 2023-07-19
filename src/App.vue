@@ -32,5 +32,8 @@ main {
     width: 100%;
     z-index: 100;
   }
+  main {
+    padding-top: 20px;
+  }
 }
 </style>
