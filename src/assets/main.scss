@@ -16,6 +16,44 @@ $font-weight-semi-bold: 600;
 $font-weight-medium: 500;
 $font-weight-regular: 400;
 
+
+.element-color-primary {
+  background-color: $element-primary;
+}
+
+.element-color-secondary {
+  background-color: $element-secondary;
+}
+
+.element-color-tertiary-1 {
+  background-color: $element-tertiary-1;
+}
+
+.element-color--tertiary-2 {
+  background-color: $element-tertiary-2;
+}
+
+.bg-1 {
+  background-color: $element-background-1;
+}
+
+.bg-2 {
+  background-color: $element-background-2;
+}
+
+.text-color-primary {
+  color: $text-primary;
+}
+
+.text-color-secondary {
+  color: $text-secondary;
+}
+
+.text-color-hyperlink {
+  color: $text-hyperlink;
+}
+
+
 // Montserrat bold
 h1 {
   font-family: $font-primary;
