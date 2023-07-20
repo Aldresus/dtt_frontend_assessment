@@ -72,4 +72,10 @@ button {
   height: 20px;
   width: 20px;
 }
+
+@media (max-width: 768px) {
+  .search-container {
+    width: 100%;
+  }
+}
 </style>

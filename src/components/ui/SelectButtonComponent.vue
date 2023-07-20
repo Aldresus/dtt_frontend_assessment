@@ -1,7 +1,7 @@
 <template>
-  <div class="button-group">
+  <div class="button-group flex justify-content-end">
     <button
-      class="button-padding button-behavior tabs text-color-white left-button no-border text"
+      class="button-padding flex-grow button-behavior tabs text-color-white left-button no-border text"
       :value="props.options[0].value"
       :class="[
         props.modelValue === props.options[0].value
@@ -32,7 +32,7 @@
     </button>
 
     <button
-      class="button-padding button-behavior tabs text-color-white right-button no-border"
+      class="button-padding button-behavior tabs flex-grow text-color-white right-button no-border"
       :value="props.options[props.options.length - 1].value"
       :class="[
         props.modelValue === props.options[props.options.length - 1].value
@@ -70,5 +70,11 @@ const setActive = (value) => {
 }
 .middle-button {
   border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .button-group {
+    width: 100%;
+  }
 }
 </style>

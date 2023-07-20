@@ -79,11 +79,13 @@ const house = {
   width: calc(100% - 2rem);
   padding: 1rem;
   height: 15vh;
+  min-height: 6rem;
 }
 
 .house-image-container {
   height: 100%;
   max-width: 15vh;
+  min-width: 6rem;
   overflow: hidden;
 }
 

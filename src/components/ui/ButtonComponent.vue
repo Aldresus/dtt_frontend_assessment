@@ -9,25 +9,12 @@
       alt="button icon"
       @click="props.onClick"
     />
-    <span class="text-color-white"> {{ props.label }}</span>
+    <span v-if="props.label" class="text-color-white"> {{ props.label }}</span>
   </button>
 </template>
 
 <script setup>
-const props = defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    required: false,
-  },
-  onClick: {
-    type: Function,
-    required: true,
-  },
-});
+const props = defineProps(["label", "icon", "onClick"]);
 
 function getImageUrl() {
   // This path must be correct for your file

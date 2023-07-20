@@ -62,6 +62,7 @@ export default {
 
   .header {
     justify-content: center;
+    height: 40px;
   }
 
   .header-gap {
@@ -74,8 +75,7 @@ export default {
 
   .header-icon {
     display: block;
-    height: 30px;
-    width: auto;
+    height: 25px;
   }
 
   .router-link-active .header-home-icon {
