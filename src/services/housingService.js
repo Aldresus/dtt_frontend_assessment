@@ -31,25 +31,25 @@ export const housingService = {
 
   /**
    * Creates a new house.
-   * @param {Object} newHouse new house to be created.
-   * @param {number} newHouse.price price of the house.
-   * @param {number} newHouse.bedrooms number of bedrooms.
-   * @param {number} newHouse.bathrooms number of bathrooms.
-   * @param {number} newHouse.size size of the house.
-   * @param {string} newHouse.streetName street name of the house.
-   * @param {string} newHouse.houseNumber house number of the house.
-   * @param {string} newHouse.numberAddition number addition of the house.
-   * @param {string} newHouse.zip zip code of the house.
-   * @param {string} newHouse.city city of the house.
-   * @param {number} newHouse.constructionYear construction year of the house.
-   * @param {boolean} newHouse.hasGarage does the house have a garage.
-   * @param {string} newHouse.description description of the house.
+   * @param {FormData} newHouseForm new house to be created.
+   * @param {number} newHouseForm.price price of the house.
+   * @param {number} newHouseForm.bedrooms number of bedrooms.
+   * @param {number} newHouseForm.bathrooms number of bathrooms.
+   * @param {number} newHouseForm.size size of the house.
+   * @param {string} newHouseForm.streetName street name of the house.
+   * @param {string} newHouseForm.houseNumber house number of the house.
+   * @param {string} newHouseForm.numberAddition number addition of the house.
+   * @param {string} newHouseForm.zip zip code of the house.
+   * @param {string} newHouseForm.city city of the house.
+   * @param {number} newHouseForm.constructionYear construction year of the house.
+   * @param {boolean} newHouseForm.hasGarage does the house have a garage.
+   * @param {string} newHouseForm.description description of the house.
    *
    *
    * @returns {Promise} newly created house.
    */
-  async createHouse(newHouse) {
-    const response = await axios.post(baseUrl, newHouse, config);
+  async createHouse(newHouseForm) {
+    const response = await axios.post(baseUrl, newHouseForm, config);
     return response.data;
   },
 

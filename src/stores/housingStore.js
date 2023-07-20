@@ -4,7 +4,25 @@ export const useHousingStore = defineStore("house", {
   state: () => ({
     houses: [],
     filteredHouses: [],
-    selectedHouse: {},
+    selectedHouse: {
+      location: {
+        city: "",
+        houseNumber: "",
+        houseNumberAddition: null,
+        street: "",
+        zip: 0,
+      },
+      image: "",
+      constructionYear: 0,
+      price: 0,
+      size: 0,
+      description: "",
+      garage: false,
+      rooms: {
+        bathrooms: 0,
+        bedrooms: 0,
+      },
+    },
     sortBy: "price",
     sortWay: "asc",
     search: "",
@@ -27,8 +45,33 @@ export const useHousingStore = defineStore("house", {
     async fetchHouseById(id) {
       this.selectedHouse = await housingService.getHouseById(id);
     },
-    async createHouse(newHouse) {
-      await housingService.createHouse(newHouse);
+    stateToFormData() {
+      //convert state to form data for the post requests
+      let data = new FormData();
+
+      data.append("price", this.selectedHouse.price);
+      data.append("bedrooms", this.selectedHouse.rooms.bedrooms);
+      data.append("bathrooms", this.selectedHouse.rooms.bathrooms);
+      data.append("size", this.selectedHouse.size);
+      data.append("streetName", this.selectedHouse.location.street);
+      data.append("houseNumber", this.selectedHouse.location.houseNumber);
+      data.append(
+        "numberAddition",
+        this.selectedHouse.location.houseNumberAddition
+      );
+      data.append("zip", this.selectedHouse.location.zip);
+
+      data.append("city", this.selectedHouse.location.city);
+      data.append("constructionYear", this.selectedHouse.constructionYear);
+      data.append("hasGarage", this.selectedHouse.garage);
+      data.append("description", this.selectedHouse.description);
+
+      return data;
+    },
+    async createHouse() {
+      let data = this.stateToFormData();
+      let response = await housingService.createHouse(data);
+      console.log(response);
     },
     async updateHouse(id, updatedHouse) {
       await housingService.updateHouse(id, updatedHouse);
