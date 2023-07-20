@@ -1,6 +1,6 @@
 <template>
   <button
-    class="button button-icon no-border element-color-primary rounded flex"
+    class="button-behavior button-padding button-icon no-border element-color-primary rounded flex"
   >
     <img
       class="no-drag"

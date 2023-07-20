@@ -1,44 +1,49 @@
 <template>
-  <button
-    class="button tabs text-color-white left-button no-border text"
-    :value="props.options[0].value"
-    :class="[
-      props.modelValue === props.options[0].value
-        ? 'element-color-primary'
-        : 'element-color-tertiary-2',
-    ]"
-    @click="setActive(props.options[0].value)"
-  >
-    {{ props.options[0].label }}
-  </button>
+  <div class="button-group">
+    <button
+      class="button-padding button-behavior tabs text-color-white left-button no-border text"
+      :value="props.options[0].value"
+      :class="[
+        props.modelValue === props.options[0].value
+          ? 'element-color-primary'
+          : 'element-color-tertiary-2',
+      ]"
+      @click="setActive(props.options[0].value)"
+    >
+      {{ props.options[0].label }}
+    </button>
 
-  <button
-    v-for="(option, index) in props.options.slice(1, props.options.length - 1)"
-    :key="index"
-    class="button tabs text-color-white middle-button no-border text"
-    :value="option.value"
-    :class="[
-      props.modelValue === option.value
-        ? 'element-color-primary'
-        : 'element-color-tertiary-2',
-    ]"
-    @click="setActive(option.value)"
-  >
-    {{ option.label }}
-  </button>
+    <button
+      v-for="(option, index) in props.options.slice(
+        1,
+        props.options.length - 1
+      )"
+      :key="index"
+      class="button-padding button-behavior tabs text-color-white middle-button no-border text"
+      :value="option.value"
+      :class="[
+        props.modelValue === option.value
+          ? 'element-color-primary'
+          : 'element-color-tertiary-2',
+      ]"
+      @click="setActive(option.value)"
+    >
+      {{ option.label }}
+    </button>
 
-  <button
-    class="button text-color-white right-button no-border"
-    :value="props.options[props.options.length - 1].value"
-    :class="[
-      props.modelValue === props.options[props.options.length - 1].value
-        ? 'element-color-primary'
-        : 'element-color-tertiary-2',
-    ]"
-    @click="setActive(props.options[props.options.length - 1].value)"
-  >
-    {{ props.options[props.options.length - 1].label }}
-  </button>
+    <button
+      class="button-padding button-behavior tabs text-color-white right-button no-border"
+      :value="props.options[props.options.length - 1].value"
+      :class="[
+        props.modelValue === props.options[props.options.length - 1].value
+          ? 'element-color-primary'
+          : 'element-color-tertiary-2',
+      ]"
+      @click="setActive(props.options[props.options.length - 1].value)"
+    >
+      {{ props.options[props.options.length - 1].label }}
+    </button>
+  </div>
 </template>
 
 <script setup>

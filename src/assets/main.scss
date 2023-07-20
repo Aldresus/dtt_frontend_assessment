@@ -85,7 +85,7 @@ h2 {
   font-size: 22px;
 }
 
-.router-link-active.header-menu, .button, .tabs, {
+.router-link-active.header-menu, button, .tabs, {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
   font-size: 18px;
@@ -147,20 +147,22 @@ html{
     font-size: 14px;
 }
 
-.button {
-  padding: 10px 1rem;
+.button-behavior {
   cursor: pointer;
   transition: ease-in-out 0.2s;
+}
+.button-padding {
+  padding: 10px 1rem;
 }
 .button-icon{
   gap: 1rem;
   align-items: center;
 }
-.button:hover {
+.button-behavior:hover {
   opacity: 0.5;
 }
 
-.button:active {
+.button-behavior:active {
   opacity: 0.8;
 }
 

@@ -22,6 +22,8 @@ import HeaderComponent from "@/components/ui/HeaderComponent.vue";
 
 main {
   padding-top: 100px;
+  padding-left: 15rem;
+  padding-right: 15rem;
 }
 
 @media (max-width: 768px) {
@@ -34,6 +36,8 @@ main {
   }
   main {
     padding-top: 20px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 </style>

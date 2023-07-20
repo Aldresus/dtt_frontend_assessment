@@ -7,7 +7,7 @@
       src="@/assets/icons/img_logo_dtt@3x.png"
       alt="DTT logo"
     />
-    <router-link class="header-menu" to="/">
+    <router-link class="header-menu button-behavior no-drag" to="/">
       <span class="header-text text-color-primary">Houses</span>
       <img
         class="header-icon header-home-icon"
@@ -15,7 +15,7 @@
         alt="unselected home icon"
       />
     </router-link>
-    <router-link class="header-menu" to="/about">
+    <router-link class="header-menu button-behavior no-drag" to="/about">
       <span class="header-text text-color-primary">About</span>
       <img
         class="header-icon header-info-icon"
