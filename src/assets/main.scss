@@ -85,7 +85,7 @@ h2 {
   font-size: 22px;
 }
 
-.router-link-active.header-menu, button, .tabs, {
+.router-link-active.header-menu, .router-link-exact-active.header-menu, button, .tabs, {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
   font-size: 18px;

@@ -2,31 +2,39 @@
   <div class="flex-column gap-1">
     <div class="flex justify-content-between align-items-center">
       <h1>Houses</h1>
-      <ButtonComponent
-        class="text-create-button"
-        :label="'CREATE NEW'"
-        icon="ic_plus_white@3x.png"
-        :onClick="test"
-      />
-      <ButtonComponent
-        class="icon-create-button"
-        icon="ic_plus_grey@3x.png"
-        :onClick="test"
-      />
+      <RouterLink class="no-decoration" to="/houses/create">
+        <ButtonComponent
+          class="text-create-button"
+          :label="'CREATE NEW'"
+          icon="ic_plus_white@3x.png" />
+        <ButtonComponent
+          class="icon-create-button"
+          icon="ic_plus_grey@3x.png"
+          :onClick="test"
+      /></RouterLink>
     </div>
     <div class="flex flex-wrap gap-2 justify-content-between">
       <SearchBarComponent placeholder="Search for a house" v-model="search" />
 
-      <SelectButtonComponent :options="selectOptions" v-model="active" />
+      <SelectButtonComponent :options="selectOptions" v-model="sortBy" />
     </div>
     <div class="flex justify-content-start">
-      <h2>x results found</h2>
+      <h2>
+        {{
+          houseStore.getFilteredHousesCount !== 0
+            ? `${houseStore.getFilteredHousesCount} results found`
+            : "No result found"
+        }}
+      </h2>
     </div>
-    <div class="flex-column gap-1 align-items-center">
-      <HouseCardComponent />
-      <HouseCardComponent />
-      <HouseCardComponent />
-    </div>
+    <RouterLink
+      class="flex-column gap-1 align-items-center no-decoration text-color-primary"
+      v-for="house in filteredHouses"
+      :to="`${house.id}`"
+      :key="house.id"
+    >
+      <HouseCardComponent :house="house" />
+    </RouterLink>
   </div>
 </template>
 
@@ -35,31 +43,41 @@ import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 import HouseCardComponent from "@/components/HouseCardComponent.vue";
 import SelectButtonComponent from "@/components/ui/SelectButtonComponent.vue";
 import SearchBarComponent from "@/components/ui/SearchBarComponent.vue";
-import { ref, watch } from "vue";
+import { useHousingStore } from "@/stores/housingStore";
+import { watch } from "vue";
+import { storeToRefs } from "pinia";
 
-let active = ref(0);
-let search = ref("");
+let houseStore = useHousingStore();
 
-watch(active, (value) => {
+const { filteredHouses, sortBy, search } = storeToRefs(houseStore);
+
+houseStore.fetchHouses();
+
+watch(sortBy, (value) => {
   console.log("active", value);
+  houseStore.sortBy = value;
+  houseStore.sortHouses();
 });
 
 watch(search, (value) => {
+  console.log(value);
+  houseStore.search = value;
+  houseStore.searchHouses();
   console.log("search", value);
 });
 
 const selectOptions = [
   {
     label: "Price",
-    value: 0,
+    value: "price",
   },
   {
     label: "Size",
-    value: 1,
+    value: "size",
   },
   {
     label: "Bedrooms",
-    value: 2,
+    value: "rooms.bedrooms",
   },
 ];
 

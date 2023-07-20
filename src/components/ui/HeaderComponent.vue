@@ -1,13 +1,11 @@
 <template>
-  <div
-    class="header text-no-decoration bg-2 flex header-gap align-items-center"
-  >
+  <div class="header bg-2 flex header-gap align-items-center">
     <img
       class="no-drag logo"
       src="@/assets/icons/img_logo_dtt@3x.png"
       alt="DTT logo"
     />
-    <router-link class="header-menu button-behavior no-drag" to="/">
+    <router-link class="header-menu button-behavior no-drag" to="/houses/">
       <span class="header-text text-color-primary">Houses</span>
       <img
         class="header-icon header-home-icon"

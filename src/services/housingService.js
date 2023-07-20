@@ -12,19 +12,17 @@ const config = {
 export const housingService = {
   /**
    * Gets all houses.
-   * @returns {Object[]} houses
+   * @returns {Promise} houses
    */
   async getHouses() {
-    console.log("getHouses");
     const response = await axios.get(baseUrl, config);
-    console.log(response.data);
     return response.data;
   },
 
   /**
    * Gets a house by its id.
    * @param {number} id id of the house.
-   * @returns {Object} house
+   * @returns {Promise} house
    */
   async getHouseById(id) {
     const response = await axios.get(`${baseUrl}/${id}`, config);
@@ -48,7 +46,7 @@ export const housingService = {
    * @param {string} newHouse.description description of the house.
    *
    *
-   * @returns {Object} newly created house.
+   * @returns {Promise} newly created house.
    */
   async createHouse(newHouse) {
     const response = await axios.post(baseUrl, newHouse, config);
@@ -73,7 +71,7 @@ export const housingService = {
    * @param {string} updatedHouse.description description of the house.
    *
    *
-   * @returns {Object} newly created house.
+   * @returns {Promise} newly created house.
    */
   async updateHouse(id, updatedHouse) {
     const response = await axios.post(`${baseUrl}/${id}`, updatedHouse, config);
@@ -83,7 +81,7 @@ export const housingService = {
   /**
    * Deletes a house.
    * @param {number} id id of the house to be deleted.
-   * @returns //todo
+   * @returns {Promise}
    */
   async deleteHouse(id) {
     const response = await axios.delete(`${baseUrl}/${id}`, config);
@@ -94,7 +92,7 @@ export const housingService = {
    * Uploads an image to a house.
    * @param {number} id id of the house to upload the image to.
    * @param {string} image path to the image.
-   * @returns //todo
+   * @returns {Promise}
    */
   async uploadHouseImage(id, image) {
     const response = await axios.post(`${baseUrl}/${id}/upload`, image, config);
