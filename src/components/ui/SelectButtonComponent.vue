@@ -48,7 +48,7 @@
 
 <script setup>
 import { computed } from "vue";
-
+//todo avoid clicking on active button
 const props = defineProps(["modelValue", "options"]);
 const emit = defineEmits(["update:modelValue"]);
 const active = computed({

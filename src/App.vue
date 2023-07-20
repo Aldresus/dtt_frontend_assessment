@@ -21,7 +21,7 @@ import HeaderComponent from "@/components/ui/HeaderComponent.vue";
 }
 
 main {
-  padding-top: 100px;
+  padding-top: 100px; /* header height */
   padding-left: 15rem;
   padding-right: 15rem;
 }
@@ -35,9 +35,7 @@ main {
     z-index: 100;
   }
   main {
-    padding-top: 20px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 0.5rem 2rem 5.5rem;
   }
 }
 </style>
