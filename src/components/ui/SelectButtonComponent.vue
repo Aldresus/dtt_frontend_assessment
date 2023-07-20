@@ -19,7 +19,7 @@
         props.options.length - 1
       )"
       :key="index"
-      class="button-padding button-behavior tabs text-color-white middle-button no-border text"
+      class="button-padding button-behavior tabs flex-grow text-color-white middle-button no-border text"
       :value="option.value"
       :class="[
         props.modelValue === option.value
