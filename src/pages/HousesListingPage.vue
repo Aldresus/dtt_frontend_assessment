@@ -4,13 +4,14 @@
       <h1>Houses</h1>
       <RouterLink class="no-decoration" to="/houses/create">
         <ButtonComponent
-          class="text-create-button"
+          icon-pos="start"
+          class="text-create-button text-color-white element-color-primary"
           :label="'CREATE NEW'"
           icon="ic_plus_white@3x.png" />
         <ButtonComponent
-          class="icon-create-button"
+          icon-pos="start"
+          class="icon-create-button text-color-white element-color-primary"
           icon="ic_plus_grey@3x.png"
-          :onClick="test"
       /></RouterLink>
     </div>
     <div class="flex flex-wrap gap-2 justify-content-between">

@@ -4,6 +4,7 @@ import AboutPage from "@/pages/AboutPage.vue";
 import HousesDetailPage from "@/pages/HousesDetailPage.vue";
 import HousesCreatePage from "@/pages/HousesCreatePage.vue";
 const routes = [
+  { path: "/", redirect: "/houses" },
   {
     path: "/houses",
     name: "HousesListingPage",

@@ -158,12 +158,29 @@ html{
   gap: 1rem;
   align-items: center;
 }
+
 .button-behavior:hover {
   opacity: 0.5;
 }
 
 .button-behavior:active {
   opacity: 0.8;
+}
+
+.input-field-container {
+  padding: 0 1rem;
+  width: 20rem;
+}
+.input-field-container:focus-within {
+  border: 1px solid;
+}
+
+.input-field {
+  padding: 10px;
+
+}
+.input-field:focus {
+  outline: none;
 }
 
 
@@ -207,5 +224,9 @@ html{
 
   .input-field{
       font-size: 12px;
+  }
+
+  .input-field-container {
+    width: 100%;
   }
 }

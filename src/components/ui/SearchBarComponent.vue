@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex search-container rounded align-items-center element-color-tertiary-1 no-drag"
+    class="flex input-field-container rounded align-items-center element-color-tertiary-1 no-drag"
   >
     <img
       src="@/assets/icons/ic_search@3x.png"
@@ -9,14 +9,14 @@
     />
 
     <input
-      class="no-border input-field"
+      class="search no-border w-full input-field no-bg input-field-text"
       :placeholder="props.placeholder"
       :value="props.modelValue"
       @input="input = $event.target.value"
     />
     <button
       v-if="input"
-      class="button-behavior flex align-items-center"
+      class="button-behavior no-bg no-border flex align-items-center"
       @click="input = ''"
     >
       <img
@@ -41,27 +41,6 @@ const input = computed({
 </script>
 
 <style scoped>
-.search-container {
-  padding: 0 1rem;
-  width: 20rem;
-}
-.search-container:focus-within {
-  border: 1px solid;
-}
-
-input {
-  padding: 10px;
-  width: 100%;
-  background: none;
-}
-input:focus {
-  outline: none;
-}
-
-button {
-  background: none;
-  border: none;
-}
 .search-icon {
   height: 20px;
   padding: 1px 6px; /* mimic the padding of a button*/
@@ -71,11 +50,5 @@ button {
   vertical-align: center;
   height: 20px;
   width: 20px;
-}
-
-@media (max-width: 768px) {
-  .search-container {
-    width: 100%;
-  }
 }
 </style>

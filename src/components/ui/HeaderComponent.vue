@@ -24,11 +24,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "HeaderComponent",
-};
-</script>
+<script setup></script>
 
 <style scoped>
 .header {

@@ -1,21 +1,28 @@
 <template>
   <button
-    class="button-behavior button-padding button-icon no-border element-color-primary rounded flex"
+    class="button-behavior button-padding button-icon no-border rounded flex align-items-center justify-content-center"
+    @click="$emit('clicked', $event)"
+    type="button"
   >
+    <span v-if="props.label && (props.iconPos === 'end' || !props.icon)">
+      {{ props.label }}</span
+    >
     <img
       class="no-drag"
       v-if="props.icon"
       :src="getImageUrl()"
       alt="button icon"
-      @click="props.onClick"
     />
-    <span v-if="props.label" class="text-color-white"> {{ props.label }}</span>
+    <span v-if="props.label && props.iconPos === 'start' && props.icon">
+      {{ props.label }}</span
+    >
   </button>
 </template>
 
 <script setup>
-const props = defineProps(["label", "icon", "onClick"]);
+const props = defineProps(["label", "icon", "iconPos", "type"]);
 
+const emit = defineEmits(["clicked"]);
 function getImageUrl() {
   // This path must be correct for your file
   let url = new URL(`@/assets/icons/`, import.meta.url);
