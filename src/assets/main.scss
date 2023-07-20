@@ -11,6 +11,7 @@ $text-primary : #000000;
 $text-secondary : #4A4B4C;
 $text-tertiary : #C3C3C3;
 $text-hyperlink : #4A4B4C;
+$text-white : #FFFFFF;
 
 $font-primary: "Montserrat", sans-serif;
 $font-secondary: "Open Sans", sans-serif;
@@ -58,8 +59,16 @@ html{
   color: $text-secondary;
 }
 
+.text-color-tertiary {
+  color: $text-tertiary;
+}
+
 .text-color-hyperlink {
   color: $text-hyperlink;
+}
+
+.text-color-white {
+  color: $text-white;
 }
 
 
@@ -137,6 +146,24 @@ html{
     font-weight: $font-weight-medium;
     font-size: 14px;
 }
+
+.button {
+  padding: 10px 1rem;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+.button-icon{
+  gap: 1rem;
+  align-items: center;
+}
+.button:hover {
+  opacity: 0.5;
+}
+
+.button:active {
+  opacity: 0.8;
+}
+
 
 @media(max-width: 768px) {
   // Montserrat bold
