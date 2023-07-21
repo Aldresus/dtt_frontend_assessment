@@ -1,9 +1,5 @@
-<template>ttt</template>
+<template></template>
 
-<script>
-export default {
-  name: "HousesDetailPage",
-};
-</script>
+<script></script>
 
 <style scoped></style>
