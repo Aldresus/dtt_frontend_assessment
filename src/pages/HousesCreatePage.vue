@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-column gap-1/2 listing-creation">
+  <div class="flex-column gap-1/2 listing-creation mb-1">
     <RouterLink to="/houses" class="no-decoration">
       <ButtonComponent
         class="text-color-primary desktop-only no-bg no-padding"
@@ -156,11 +156,14 @@ const onPost = () => {
 
 <style scoped>
 .listing-creation {
-  max-width: 30vw;
+  max-width: 30rem;
 }
 @media (max-width: 768px) {
   .listing-creation {
     max-width: 100%;
+  }
+  .w-0 {
+    width: 100%;
   }
 }
 </style>
