@@ -7,20 +7,20 @@ export const useHousingStore = defineStore("house", {
     selectedHouse: {
       location: {
         city: "",
-        houseNumber: "",
-        houseNumberAddition: null,
+        houseNumber: null,
+        houseNumberAddition: "",
         street: "",
-        zip: 0,
+        zip: "",
       },
       image: "",
-      constructionYear: 0,
-      price: 0,
-      size: 0,
+      constructionYear: null,
+      price: null,
+      size: null,
       description: "",
       garage: false,
       rooms: {
-        bathrooms: 0,
-        bedrooms: 0,
+        bathrooms: null,
+        bedrooms: null,
       },
     },
     sortBy: "price",
@@ -62,7 +62,10 @@ export const useHousingStore = defineStore("house", {
       data.append("zip", this.selectedHouse.location.zip);
 
       data.append("city", this.selectedHouse.location.city);
-      data.append("constructionYear", this.selectedHouse.constructionYear);
+      data.append(
+        "constructionYear",
+        new Date(this.selectedHouse.constructionYear).getFullYear().toString()
+      );
       data.append("hasGarage", this.selectedHouse.garage);
       data.append("description", this.selectedHouse.description);
 

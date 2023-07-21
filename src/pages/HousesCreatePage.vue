@@ -30,6 +30,7 @@
           title="House number*"
           placeholder="Enter the house number"
           v-model="housingStore.selectedHouse.location.houseNumber"
+          type="number"
         />
         <InputComponent
           class="flex-grow"
@@ -63,6 +64,8 @@
           title="Price*"
           placeholder="e.g. €150.000"
           v-model="housingStore.selectedHouse.price"
+          type="number"
+          prefix="€"
         />
       </div>
       <div class="flex flex-wrap gap-1">
@@ -72,6 +75,7 @@
           placeholder="e.g. 60m2"
           type="number"
           v-model="housingStore.selectedHouse.size"
+          suffix="m2"
         />
         <DropdownComponent
           class="flex-grow w-0"
@@ -102,6 +106,9 @@
           title="Construction date*"
           placeholder="Enter description"
           v-model="housingStore.selectedHouse.constructionYear"
+          type="date"
+          min="1901-01-01"
+          :max="new Date().toISOString().split('T')[0]"
         />
       </div>
       <div>
