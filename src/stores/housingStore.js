@@ -70,14 +70,26 @@ export const useHousingStore = defineStore("house", {
     },
     async createHouse() {
       let data = this.stateToFormData();
-      let response = await housingService.createHouse(data);
-      console.log(response);
+      await housingService.createHouse(data).then((response) => {
+        console.log("created house", response);
+        this.uploadImage(response.id, this.selectedHouse.image).then(
+          (response) => {
+            console.log("uploaded image", response);
+            this.fetchHouses();
+          }
+        );
+      });
     },
     async updateHouse(id, updatedHouse) {
       await housingService.updateHouse(id, updatedHouse);
     },
     async deleteHouse(id) {
       await housingService.deleteHouse(id);
+    },
+    async uploadImage(id, image) {
+      let data = new FormData();
+      data.append("image", image);
+      await housingService.uploadHouseImage(id, data);
     },
     searchHouses() {
       this.filteredHouses = this.houses.filter((house) => {

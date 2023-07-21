@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-column gap-1/4">
+  <form class="flex-column gap-1/4" enctype="multipart/form-data">
     <div class="pseudo-relative">
       <ButtonComponent
         class="clear-button no-bg icon-shadow"
@@ -26,7 +26,7 @@
       >
         <img
           class="contained-image no-drag"
-          :src="getImageUrl()"
+          :src="imagePreview"
           alt="house preview"
         />
       </span>
@@ -36,23 +36,33 @@
       :id="props.title"
       type="file"
       accept="image/png, image/jpeg"
-      @change="input = $event.target.files[0].name"
+      @change="upload($event)"
     />
-  </div>
+  </form>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 
 const props = defineProps(["title", "placeholder", "modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
 
+const imagePreview = ref("");
 const input = computed({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
 
+const upload = (event) => {
+  const image = event.target.files[0];
+  const reader = new FileReader();
+  input.value = image;
+  reader.readAsDataURL(image);
+  reader.onload = (e) => {
+    imagePreview.value = e.target.result;
+  };
+};
 const getImageUrl = () => {
   // This path must be correct for your file
   let url = new URL(`@/assets/exampleHouses/`, import.meta.url);
@@ -62,6 +72,7 @@ const getImageUrl = () => {
 const clear = (event) => {
   event.preventDefault();
   input.value = null;
+  imagePreview.value = "";
 };
 </script>
 
