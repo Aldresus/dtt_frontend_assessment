@@ -1,5 +1,12 @@
 <template>
   <div class="flex-column gap-1/4">
+    <div class="pseudo-relative">
+      <ButtonComponent
+        class="clear-button no-bg icon-shadow"
+        icon="ic_clear_white@3x.png"
+        @clicked="clear"
+      />
+    </div>
     <label :for="props.title" class="input-field-title">
       {{ props.title }}
     </label>
@@ -13,19 +20,18 @@
         src="@/assets/icons/ic_upload@3x.png"
         alt="upload icon"
       />
-      <span v-if="props.modelValue" class="house-preview">
+      <span
+        v-if="props.modelValue"
+        class="flex justify-content-center image-container rounded"
+      >
         <img
-          class="house-preview no-drag"
+          class="contained-image no-drag"
           :src="getImageUrl()"
           alt="house preview"
         />
-        <ButtonComponent
-          class="clear-button no-bg"
-          icon="ic_clear_white@3x.png"
-          @clicked="clear"
-        />
       </span>
     </label>
+
     <input
       :id="props.title"
       type="file"
@@ -55,7 +61,7 @@ const getImageUrl = () => {
 
 const clear = (event) => {
   event.preventDefault();
-  input.value = "";
+  input.value = null;
 };
 </script>
 
@@ -64,8 +70,8 @@ input[type="file"] {
   display: none;
 }
 .dropzone {
-  width: 5vw;
-  height: 5vw;
+  width: 5rem;
+  height: 5rem;
   border: 2px dashed;
 
   cursor: pointer;
@@ -75,13 +81,9 @@ input[type="file"] {
   width: auto;
 }
 
-.house-preview {
-  height: 100%;
-  width: 100%;
-}
 .clear-button {
-  position: relative;
-  bottom: 6rem;
-  left: 3rem;
+  position: absolute;
+  left: 3.5rem;
+  top: 0.5rem;
 }
 </style>
