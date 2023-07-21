@@ -1,8 +1,8 @@
 <template>
   <div class="card rounded bg-2 flex gap-1">
-    <div class="house-image-container rounded">
+    <div class="image-container rounded flex justify-content-center">
       <img
-        class="no-drag house-image"
+        class="no-drag contained-image"
         :src="props.house.image"
         alt="house image"
       />
@@ -83,22 +83,15 @@ const props = defineProps({
   height: 15vh;
   min-height: 6rem;
 }
-
-.house-image-container {
-  height: 100%;
-  max-width: 15vh;
-  min-width: 6rem;
-  overflow: hidden;
-}
-
-.house-image {
-  height: 100%;
-  width: auto;
-}
 .house-icon {
   height: 0.8rem;
   width: auto;
   margin-right: 0.5rem;
+}
+
+.image-container {
+  max-width: 15vh;
+  min-width: 6rem;
 }
 
 .house-details {

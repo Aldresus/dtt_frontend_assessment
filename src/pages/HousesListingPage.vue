@@ -5,12 +5,12 @@
       <RouterLink class="no-decoration" to="/houses/create">
         <ButtonComponent
           icon-pos="start"
-          class="text-create-button text-color-white element-color-primary"
+          class="desktop-only text-color-white element-color-primary"
           :label="'CREATE NEW'"
           icon="ic_plus_white@3x.png" />
         <ButtonComponent
           icon-pos="start"
-          class="icon-create-button text-color-white element-color-primary"
+          class="mobile-only no-bg text-color-white element-color-primary"
           icon="ic_plus_grey@3x.png"
       /></RouterLink>
     </div>
@@ -31,7 +31,7 @@
     <RouterLink
       class="flex-column gap-1 align-items-center no-decoration text-color-primary"
       v-for="house in filteredHouses"
-      :to="`${house.id}`"
+      :to="`houses/${house.id}`"
       :key="house.id"
     >
       <HouseCardComponent :house="house" />
@@ -87,18 +87,4 @@ const test = () => {
 };
 </script>
 
-<style scoped>
-.icon-create-button {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .text-create-button {
-    display: none;
-  }
-  .icon-create-button {
-    display: initial;
-    background: none;
-  }
-}
-</style>
+<style scoped></style>

@@ -1,17 +1,17 @@
 @import "utils";
 
-$element-primary : #EB5440;
-$element-secondary : #4A4B4C;
-$element-tertiary-1 : #E8E8E8;
-$element-tertiary-2 : #C3C3C3;
-$element-background-1 : #F6F6F6;
-$element-background-2 : #FFFFFF;
+$element-primary: #eb5440;
+$element-secondary: #4a4b4c;
+$element-tertiary-1: #e8e8e8;
+$element-tertiary-2: #c3c3c3;
+$element-background-1: #f6f6f6;
+$element-background-2: #ffffff;
 
-$text-primary : #000000;
-$text-secondary : #4A4B4C;
-$text-tertiary : #C3C3C3;
-$text-hyperlink : #4A4B4C;
-$text-white : #FFFFFF;
+$text-primary: #000000;
+$text-secondary: #4a4b4c;
+$text-tertiary: #c3c3c3;
+$text-hyperlink: #4a4b4c;
+$text-white: #ffffff;
 
 $font-primary: "Montserrat", sans-serif;
 $font-secondary: "Open Sans", sans-serif;
@@ -19,12 +19,11 @@ $font-weight-bold: 700;
 $font-weight-semi-bold: 600;
 $font-weight-medium: 400;
 
-
-html, body, h1, h2 {
+html,
+body,
+h1,
+h2 {
   margin: 0;
-}
-html{
-  background-color: $element-background-1;
 }
 
 .element-color-primary {
@@ -71,7 +70,6 @@ html{
   color: $text-white;
 }
 
-
 // Montserrat bold
 h1 {
   font-family: $font-primary;
@@ -85,41 +83,43 @@ h2 {
   font-size: 22px;
 }
 
-.router-link-active.header-menu, .router-link-exact-active.header-menu, button, .tabs, {
+.router-link-active.header-menu,
+.router-link-exact-active.header-menu,
+button,
+.tabs {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
   font-size: 18px;
-
 }
 
 // Montserrat semi-bold
-.back-button-label{
+.back-button-label {
   font-family: $font-primary;
   font-weight: $font-weight-semi-bold;
   font-size: 16px;
 }
 
-.input-field-title{
+.input-field-title {
   font-family: $font-primary;
   font-weight: $font-weight-semi-bold;
   font-size: 14px;
 }
 
 // Montserrat medium
-.header-menu{
+.header-menu {
   font-family: $font-primary;
   font-weight: $font-weight-medium;
   font-size: 18px;
   text-decoration: none;
 }
 
-.empty-state-message{
-    font-family: $font-primary;
-    font-weight: $font-weight-medium;
-    font-size: 18px;
+.empty-state-message {
+  font-family: $font-primary;
+  font-weight: $font-weight-medium;
+  font-size: 18px;
 }
 
-.error-message{
+.error-message {
   font-family: $font-primary;
   font-weight: $font-weight-medium;
   font-style: italic;
@@ -127,24 +127,24 @@ h2 {
 }
 
 // Open Sans semi-bold
-.listing-info{
+.listing-info {
   font-family: $font-secondary;
   font-weight: $font-weight-semi-bold;
   font-size: 16px;
-
 }
 
 // Open Sans regular
-html{
+html {
   font-family: $font-secondary;
   font-weight: $font-weight-medium;
   font-size: 18px;
+  background-color: $element-background-1;
 }
 
-.input-field{
-    font-family: $font-secondary;
-    font-weight: $font-weight-medium;
-    font-size: 14px;
+.input-field {
+  font-family: $font-secondary;
+  font-weight: $font-weight-medium;
+  font-size: 14px;
 }
 
 .button-behavior {
@@ -154,7 +154,7 @@ html{
 .button-padding {
   padding: 10px 1rem;
 }
-.button-icon{
+.button-icon {
   gap: 1rem;
   align-items: center;
 }
@@ -177,14 +177,30 @@ html{
 
 .input-field {
   padding: 10px;
-
 }
 .input-field:focus {
   outline: none;
 }
 
+.shadow {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-@media(max-width: 768px) {
+.icon-shadow {
+  filter: drop-shadow(0px 10px 15px -3px rgba(0, 0, 0, 0.1));
+}
+
+.image-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.contained-image {
+  height: 100%;
+  width: auto;
+}
+
+@media (max-width: 768px) {
   // Montserrat bold
   h1 {
     font-size: 18px;
@@ -194,36 +210,37 @@ html{
     font-size: 14px;
   }
 
-  .button, .tabs, {
+  .button,
+  .tabs {
     font-size: 12px;
   }
 
   // Montserrat semi-bold
-  .input-field-title{
+  .input-field-title {
     font-size: 12px;
   }
 
   // Montserrat medium
-  .empty-state-message{
+  .empty-state-message {
     font-size: 14px;
   }
 
-  .error-message{
+  .error-message {
     font-size: 12px;
   }
 
   // Open Sans semi-bold
-  .listing-info{
+  .listing-info {
     font-size: 12px;
   }
 
   // Open Sans regular
-  html{
-      font-size: 12px;
+  html {
+    font-size: 12px;
   }
 
-  .input-field{
-      font-size: 12px;
+  .input-field {
+    font-size: 12px;
   }
 
   .input-field-container {
