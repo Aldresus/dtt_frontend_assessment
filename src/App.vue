@@ -20,12 +20,6 @@ import HeaderComponent from "@/components/ui/HeaderComponent.vue";
   z-index: 100;
 }
 
-main {
-  padding-top: 100px; /* header height */
-  padding-left: 15rem;
-  padding-right: 15rem;
-}
-
 @media (max-width: 768px) {
   .header-position {
     position: fixed;
@@ -33,9 +27,6 @@ main {
     bottom: 0;
     width: 100%;
     z-index: 100;
-  }
-  main {
-    padding: 0.5rem 2rem 5.5rem;
   }
 }
 </style>
