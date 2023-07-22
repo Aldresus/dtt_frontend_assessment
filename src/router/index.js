@@ -24,6 +24,11 @@ const routes = [
         name: "HousesCreatePage",
         component: HousesCreatePage,
       },
+      {
+        path: "edit/:id",
+        name: "HousesEditPage",
+        component: HousesCreatePage,
+      },
     ],
   },
 

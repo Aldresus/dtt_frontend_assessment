@@ -56,7 +56,7 @@ export const housingService = {
   /**
    * Updates a house.
    * @param {number} id id of the house to be updated.
-   * @param {Object} updatedHouse updated house.
+   * @param {FormData} updatedHouse updated house.
    * @param {number} updatedHouse.price price of the house.
    * @param {number} updatedHouse.bedrooms number of bedrooms.
    * @param {number} updatedHouse.bathrooms number of bathrooms.
@@ -91,7 +91,7 @@ export const housingService = {
   /**
    * Uploads an image to a house.
    * @param {number} id id of the house to upload the image to.
-   * @param {string} image path to the image.
+   * @param {FormData} image path to the image.
    * @returns {Promise}
    */
   async uploadHouseImage(id, image) {

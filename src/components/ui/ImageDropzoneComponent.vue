@@ -1,5 +1,5 @@
 <template>
-  <form class="flex-column gap-1/4" enctype="multipart/form-data">
+  <div class="flex-column gap-1/4">
     <div class="pseudo-relative">
       <ButtonComponent
         class="clear-button no-bg icon-shadow"
@@ -7,11 +7,11 @@
         @clicked="clear"
       />
     </div>
-    <label :for="props.title" class="input-field-title">
+    <label :for="id" class="input-field-title">
       {{ props.title }}
     </label>
     <label
-      :for="props.title"
+      :for="id"
       class="dropzone text-color-tertiary rounded flex justify-content-center align-items-center"
     >
       <img
@@ -33,19 +33,20 @@
     </label>
 
     <input
-      :id="props.title"
+      :id="id"
       type="file"
       accept="image/png, image/jpeg"
       @change="upload($event)"
+      :required="props.required"
     />
-  </form>
+  </div>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 
-const props = defineProps(["title", "placeholder", "modelValue"]);
+const props = defineProps(["title", "placeholder", "modelValue", "required"]);
 const emit = defineEmits(["update:modelValue"]);
 
 const imagePreview = ref("");
@@ -53,6 +54,20 @@ const input = computed({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
+
+const id = props.title.replace(new RegExp(" ", "g"), "-");
+
+watch(
+  () => props.modelValue,
+  () => {
+    console.log("props.modelValue", props.modelValue, input);
+    if (input) {
+      console.log("props.modelValue", props.modelValue, input);
+
+      imagePreview.value = input.value;
+    }
+  }
+);
 
 const upload = (event) => {
   const image = event.target.files[0];
@@ -62,11 +77,6 @@ const upload = (event) => {
   reader.onload = (e) => {
     imagePreview.value = e.target.result;
   };
-};
-const getImageUrl = () => {
-  // This path must be correct for your file
-  let url = new URL(`@/assets/exampleHouses/`, import.meta.url);
-  return `${url}/${props.modelValue}`;
 };
 
 const clear = (event) => {

@@ -5,6 +5,7 @@ export const useHousingStore = defineStore("house", {
     houses: [],
     filteredHouses: [],
     selectedHouse: {
+      id: null,
       location: {
         city: "",
         houseNumber: null,
@@ -43,9 +44,11 @@ export const useHousingStore = defineStore("house", {
       });
     },
     async fetchHouseById(id) {
-      this.selectedHouse = await housingService.getHouseById(id);
+      await housingService.getHouseById(id).then((house) => {
+        this.selectedHouse = house[0];
+      });
     },
-    stateToFormData() {
+    selectedHouseToFormData() {
       //convert state to form data for the post requests
       let data = new FormData();
 
@@ -72,19 +75,20 @@ export const useHousingStore = defineStore("house", {
       return data;
     },
     async createHouse() {
-      let data = this.stateToFormData();
-      await housingService.createHouse(data).then((response) => {
-        console.log("created house", response);
-        this.uploadImage(response.id, this.selectedHouse.image).then(
-          (response) => {
-            console.log("uploaded image", response);
-            this.fetchHouses();
-          }
-        );
+      let data = this.selectedHouseToFormData();
+      housingService.createHouse(data).then((response) => {
+        this.uploadImage(response.id, this.selectedHouse.image).then(() => {
+          this.fetchHouses();
+        });
       });
     },
-    async updateHouse(id, updatedHouse) {
-      await housingService.updateHouse(id, updatedHouse);
+    async updateHouse(id) {
+      let data = this.selectedHouseToFormData();
+      housingService.updateHouse(id, data).then(() => {
+        this.uploadImage(id, this.selectedHouse.image).then(() => {
+          this.fetchHouses();
+        });
+      });
     },
     async deleteHouse(id) {
       await housingService.deleteHouse(id);

@@ -2,7 +2,7 @@
   <button
     class="button-behavior button-padding button-icon no-border rounded flex align-items-center justify-content-center"
     @click="$emit('clicked', $event)"
-    type="button"
+    :type="props.type"
   >
     <span v-if="props.label && (props.iconPos === 'end' || !props.icon)">
       {{ props.label }}</span
