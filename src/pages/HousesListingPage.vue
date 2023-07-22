@@ -40,8 +40,9 @@
           :key="house.id"
         >
           <HouseCardComponent :house="house" />
-        </RouterLink></div
-    ></template>
+        </RouterLink>
+      </div>
+    </template>
   </MainLayout>
 </template>
 
