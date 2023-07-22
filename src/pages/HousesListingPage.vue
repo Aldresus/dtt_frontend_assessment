@@ -36,7 +36,7 @@
         <RouterLink
           class="flex-column gap-1 align-items-center no-decoration text-color-primary"
           v-for="house in filteredHouses"
-          :to="`houses/${house.id}`"
+          :to="`/houses/${house.id}`"
           :key="house.id"
         >
           <HouseCardComponent :house="house" />
