@@ -37,7 +37,7 @@
               v-model="housingStore.selectedHouse.location.houseNumber"
               type="number"
               :required="true"
-              min="1"
+              :min="1"
             />
             <InputComponent
               class="flex-grow"
@@ -76,7 +76,7 @@
               type="number"
               prefix="€"
               :required="true"
-              min="1"
+              :min="1"
             />
           </div>
           <div class="flex flex-wrap gap-1">
@@ -88,7 +88,7 @@
               v-model="housingStore.selectedHouse.size"
               suffix="m2"
               :required="true"
-              min="1"
+              :min="1"
             />
             <DropdownComponent
               class="flex-grow w-0"
@@ -107,7 +107,7 @@
               placeholder="Enter amount"
               v-model="housingStore.selectedHouse.rooms.bedrooms"
               :required="true"
-              min="1"
+              :min="1"
             />
             <InputComponent
               class="flex-grow w-0"
@@ -116,7 +116,7 @@
               placeholder="Enter amount"
               v-model="housingStore.selectedHouse.rooms.bathrooms"
               :required="true"
-              min="1"
+              :min="1"
             />
           </div>
           <div>
@@ -125,7 +125,7 @@
               placeholder="Enter description"
               v-model="housingStore.selectedHouse.constructionYear"
               type="number"
-              min="1901"
+              :min="1901"
               :max="new Date().getFullYear()"
               :required="true"
             />
