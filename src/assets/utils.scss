@@ -172,6 +172,17 @@
   height: 100%;
 }
 
+.house-icon {
+  height: 0.8rem;
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.card {
+  width: calc(100% - 2rem);
+  padding: 1rem;
+}
+
 .w-screen {
   width: calc(100vw);
   max-width: 100%; //avoid horizontal scroll

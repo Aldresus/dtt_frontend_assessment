@@ -1,5 +1,10 @@
 <script setup>
 import HeaderComponent from "@/components/ui/HeaderComponent.vue";
+import { useHousingStore } from "@/stores/housingStore";
+
+const housingStore = useHousingStore();
+
+housingStore.fetchHouses();
 </script>
 
 <template>

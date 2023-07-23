@@ -8,7 +8,7 @@
       />
     </div>
     <div class="house-details flex-column justify-content-between">
-      <h2>
+      <h2 :class="{ tabs: props.small }">
         {{
           `${props.house.location.houseNumber} ${props.house.location.street}`
         }}
@@ -73,6 +73,11 @@ const props = defineProps({
       type: String,
     },
   },
+  small: {
+    required: false,
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
@@ -80,22 +85,21 @@ const props = defineProps({
 .card {
   width: calc(100% - 2rem);
   padding: 1rem;
-  height: 15vh;
-  min-height: 6rem;
-}
-.house-icon {
-  height: 0.8rem;
-  width: auto;
-  margin-right: 0.5rem;
 }
 
 .image-container {
-  max-width: 15vh;
-  min-width: 6rem;
+  max-height: 7rem;
+  max-width: 7rem;
+  width: 20%;
+  height: 20%;
+  min-width: 5rem;
+  min-height: 5rem;
+  aspect-ratio: 1;
 }
 
-.house-details {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.contained-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
