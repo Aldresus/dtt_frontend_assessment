@@ -3,9 +3,11 @@
     <template v-slot>
       <div>
         <DeleteModalComponent
+          v-if="selectedHouse.madeByMe && selectedHouse.id"
           :house-id="selectedHouse.id"
           :show-modal="showModal"
-          @deleteHouse="deleteHouse(selectedHouse.id)"
+          @deleteHouse="deleteHouse($event)"
+          @close-modal="closeModal"
         />
         <div class="flex-column gap-1">
           <div>
@@ -147,7 +149,7 @@
 import MainLayout from "@/layouts/MainLayout.vue";
 import { useHousingStore } from "@/stores/housingStore";
 import { storeToRefs } from "pinia";
-import { onBeforeRouteUpdate, useRoute } from "vue-router";
+import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 import HouseCardComponent from "@/components/HouseCardComponent.vue";
 import { utils } from "@/commons/utils";
@@ -155,11 +157,17 @@ import { ref } from "vue";
 import DeleteModalComponent from "@/components/DeleteModalComponent.vue";
 
 const route = useRoute();
+const router = useRouter();
 
 const showModal = ref(false);
 
 const deleteHouse = (id) => {
   houseStore.deleteHouse(id);
+  router.push("/houses");
+};
+
+const closeModal = () => {
+  showModal.value = false;
 };
 
 const houseStore = useHousingStore();

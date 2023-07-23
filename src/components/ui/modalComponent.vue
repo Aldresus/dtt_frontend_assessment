@@ -3,9 +3,7 @@
     v-if="props.showModal"
     class="modal-background flex align-items-center justify-content-center"
   >
-    <div
-      class="bg-1 modal-card rounded flex-column align-items-center justify-content-center"
-    >
+    <div class="bg-1 modal-card rounded">
       <slot>
         <!--       modal body -->
       </slot>
@@ -21,8 +19,6 @@ const props = defineProps({
     default: false,
   },
 });
-
-console.log(props);
 </script>
 
 <style scoped>
@@ -36,7 +32,7 @@ console.log(props);
   background-color: rgba(0, 0, 0, 0.2);
 }
 .modal-card {
-  padding: 1rem;
+  padding: 3rem 1rem;
   width: 33%;
 }
 </style>

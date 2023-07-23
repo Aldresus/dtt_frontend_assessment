@@ -1,8 +1,10 @@
 <template>
   <DeleteModalComponent
+    v-if="props.editable && props.house.madeByMe"
     :house-id="props.house.id"
     :show-modal="showModal"
-    @deleteHouse="$emit('deleteHouse', props.house.id)"
+    @deleteHouse="deleteHouse(props.house.id)"
+    @close-modal="closeModal"
   />
   <div class="card rounded bg-2 flex gap-1">
     <div class="image-container rounded flex justify-content-center">
@@ -124,6 +126,15 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["deleteHouse"]);
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+const deleteHouse = (houseId) => {
+  emit("deleteHouse", houseId);
+  closeModal();
+};
 
 let showModal = ref(false);
 </script>
