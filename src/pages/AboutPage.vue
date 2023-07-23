@@ -4,24 +4,7 @@
       <div class="mb-3">
         <h1 class="mb-1">About DTT Real Estate</h1>
         <div class="text-color-secondary">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-            placerat, sapien at tincidunt pharetra, eros lacus tempus dolor,
-            eget pharetra ex purus non lorem. Vivamus volutpat semper nulla, vel
-            semper nulla dapibus et. Phasellus eleifend mauris id nisi tempor
-            consequat. Sed non urna mauris. Maecenas accumsan nec orci sit amet
-            pharetra. Praesent tristique diam aliquet porttitor euismod. Vivamus
-            suscipit maximus quam, quis feugiat felis varius sit amet.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-            placerat, sapien at tincidunt pharetra, eros lacus tempus dolor,
-            eget pharetra ex purus non lorem. Vivamus volutpat semper nulla, vel
-            semper nulla dapibus et. Phasellus eleifend mauris id nisi tempor
-            consequat. Sed non urna mauris. Maecenas accumsan nec orci sit amet
-            pharetra. Praesent tristique diam aliquet porttitor euismod. Vivamus
-            suscipit maximus quam, quis feugiat felis varius sit amet.
-          </p>
+          <p>It&apos;s all about housing.</p>
         </div>
       </div>
       <div class="flex-column gap-1">

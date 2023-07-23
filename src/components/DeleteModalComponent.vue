@@ -38,7 +38,6 @@ const props = defineProps({
     required: true,
   },
 });
-console.log(props);
 const emit = defineEmits(["deleteHouse", "closeModal"]);
 </script>
 

@@ -94,14 +94,10 @@ export const useHousingStore = defineStore("house", {
     },
     async updateHouse(id) {
       let data = this.selectedHouseToFormData();
-      let response = await housingService
-        .updateHouse(id, data)
-        .then(async () => {
-          await this.uploadImage(id, this.selectedHouse.image);
-          return id;
-        });
-      console.log("response", response);
-      return response;
+      return await housingService.updateHouse(id, data).then(async () => {
+        await this.uploadImage(id, this.selectedHouse.image);
+        return id;
+      });
     },
     async deleteHouse(id) {
       await housingService.deleteHouse(id).then(() => {
@@ -127,7 +123,6 @@ export const useHousingStore = defineStore("house", {
       });
     },
     sortHouses() {
-      console.log(this.sortBy);
       this.filteredHouses.sort((a, b) => {
         if (this.sortWay === "asc") {
           //todo implement sort by asc and desc

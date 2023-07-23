@@ -67,16 +67,13 @@ const { filteredHouses, sortBy, search } = storeToRefs(houseStore);
 houseStore.fetchHouses();
 
 watch(sortBy, (value) => {
-  console.log("active", value);
   houseStore.sortBy = value;
   houseStore.sortHouses();
 });
 
 watch(search, (value) => {
-  console.log(value);
   houseStore.search = value;
   houseStore.searchHouses();
-  console.log("search", value);
 });
 
 const deleteHouse = (id) => {
@@ -97,10 +94,6 @@ const selectOptions = [
     value: "rooms.bedrooms",
   },
 ];
-
-const test = () => {
-  console.log("test");
-};
 </script>
 
 <style scoped></style>
