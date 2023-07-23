@@ -24,19 +24,49 @@
                   alt="house preview"
                 />
               </div>
-              <div class="bg-2 card house-card">
+              <div class="bg-2 card house-card flex-column gap-1/2">
                 <h2>
                   {{
                     `${selectedHouse.location.houseNumber} ${selectedHouse.location.street}`
                   }}
                 </h2>
-                <div class="text-color-secondary">
-                  {{ `€ ${selectedHouse.price}` }}
-                </div>
-                <div class="listing-info text-color-tertiary">
+                <div class="listing-info text-color-secondary">
+                  <img
+                    class="house-icon"
+                    src="@/assets/icons/ic_location@3x.png"
+                    alt="location icon"
+                  />
                   {{
                     `${selectedHouse.location.zip} ${selectedHouse.location.city}`
                   }}
+                </div>
+                <div class="flex gap-1 listing-info text-color-secondary">
+                  <div>
+                    <img
+                      class="house-icon"
+                      src="@/assets/icons/ic_price@3x.png"
+                      alt="price icon"
+                    />
+                    <span>{{ utils.formatPrice(selectedHouse.price) }}</span>
+                  </div>
+                  <div>
+                    <img
+                      class="house-icon"
+                      src="@/assets/icons/ic_size@3x.png"
+                      alt="size icon"
+                    />
+                    <span>{{ `${selectedHouse.size} m2` }}</span>
+                  </div>
+                  <div>
+                    <img
+                      class="house-icon"
+                      src="@/assets/icons/ic_construction_date@3x.png"
+                      alt="construction date icon"
+                    />
+                    <span>{{
+                      `Built in ${selectedHouse.constructionYear}`
+                    }}</span>
+                  </div>
                 </div>
                 <div class="flex gap-1 listing-info text-color-secondary">
                   <div>
@@ -58,13 +88,13 @@
                   <div>
                     <img
                       class="house-icon"
-                      src="@/assets/icons/ic_size@3x.png"
+                      src="@/assets/icons/ic_garage@3x.png"
                       alt="size icon"
                     />
-                    <span>{{ `${selectedHouse.size} m2` }}</span>
+                    <span>{{ selectedHouse.hasGarage ? "Yes" : "No" }}</span>
                   </div>
                 </div>
-                <div>
+                <div class="text-color-secondary">
                   {{ selectedHouse.description }}
                 </div>
               </div>
@@ -92,6 +122,7 @@ import { storeToRefs } from "pinia";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 import HouseCardComponent from "@/components/HouseCardComponent.vue";
+import { utils } from "@/commons/utils";
 
 const route = useRoute();
 

@@ -14,7 +14,7 @@
         }}
       </h2>
       <div class="text-color-secondary">
-        {{ `€ ${props.house.price}` }}
+        {{ `€ ${utils.formatPrice(props.house.price)}` }}
       </div>
       <div class="listing-info text-color-tertiary">
         {{ `${props.house.location.zip} ${props.house.location.city}` }}
@@ -50,6 +50,8 @@
 </template>
 
 <script setup>
+import { utils } from "@/commons/utils";
+
 const props = defineProps({
   house: {
     rooms: {
