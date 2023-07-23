@@ -18,7 +18,7 @@ export const useHousingStore = defineStore("house", {
       price: null,
       size: null,
       description: "",
-      garage: false,
+      hasGarage: false,
       rooms: {
         bathrooms: null,
         bedrooms: null,
@@ -69,26 +69,30 @@ export const useHousingStore = defineStore("house", {
         "constructionYear",
         new Date(this.selectedHouse.constructionYear).getFullYear().toString()
       );
-      data.append("hasGarage", this.selectedHouse.garage);
+      data.append("hasGarage", this.selectedHouse.hasGarage);
       data.append("description", this.selectedHouse.description);
 
       return data;
     },
     async createHouse() {
       let data = this.selectedHouseToFormData();
-      housingService.createHouse(data).then((response) => {
-        this.uploadImage(response.id, this.selectedHouse.image).then(() => {
-          this.fetchHouses();
+      let response = await housingService
+        .createHouse(data)
+        .then(async (response) => {
+          await this.uploadImage(response.id, this.selectedHouse.image);
+          return response;
         });
-      });
+      return response.id;
     },
     async updateHouse(id) {
       let data = this.selectedHouseToFormData();
-      housingService.updateHouse(id, data).then(() => {
-        this.uploadImage(id, this.selectedHouse.image).then(() => {
-          this.fetchHouses();
+      let response = await housingService
+        .updateHouse(id, data)
+        .then(async () => {
+          await this.uploadImage(id, this.selectedHouse.image);
+          return response;
         });
-      });
+      return response;
     },
     async deleteHouse(id) {
       await housingService.deleteHouse(id);
@@ -121,6 +125,28 @@ export const useHousingStore = defineStore("house", {
           return a[this.sortBy] - b[this.sortBy];
         }
       });
+    },
+    resetSelectedHouse() {
+      this.selectedHouse = {
+        id: null,
+        location: {
+          city: "",
+          houseNumber: null,
+          houseNumberAddition: "",
+          street: "",
+          zip: "",
+        },
+        image: "",
+        constructionYear: null,
+        price: null,
+        size: null,
+        description: "",
+        hasGarage: false,
+        rooms: {
+          bathrooms: null,
+          bedrooms: null,
+        },
+      };
     },
   },
 });

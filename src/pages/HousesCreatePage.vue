@@ -8,6 +8,7 @@
             icon-pos="start"
             :label="isEdit ? 'Back to detail page' : 'Back to overview'"
             icon="ic_back_grey@3x.png"
+            type="button"
         /></RouterLink>
         <div class="flex align-items-center justify-content-between mb-1">
           <RouterLink :to="backRoute" class="mobile-only no-decoration">
@@ -15,6 +16,7 @@
               class="text-color-primary no-bg no-padding"
               icon-pos="start"
               icon="ic_back_grey@3x.png"
+              type="button"
           /></RouterLink>
           <h1>{{ isEdit ? "Edit listing" : "Create new listing" }}</h1>
         </div>
@@ -64,15 +66,6 @@
             <ImageDropzoneComponent
               title="Upload picture (PNG or JPG)*"
               v-model="housingStore.selectedHouse.image"
-              required="true"
-            />
-            <input
-              :value="housingStore.selectedHouse.image"
-              class="v-hidden"
-              id="test"
-              type="file"
-              accept="image/png, image/jpeg"
-              required
             />
           </div>
           <div>
@@ -102,7 +95,7 @@
               title="Garage*"
               placeholder="Select"
               :options="garageOptions"
-              v-model="housingStore.selectedHouse.garage"
+              v-model="housingStore.selectedHouse.hasGarage"
               required="true"
             />
           </div>
@@ -146,11 +139,7 @@
             />
           </div>
           <div class="flex align-items-center gap-1 mt-1">
-            <div class="flex-grow w-full">
-              <span v-for="error in validationErrors" class="error-message">
-                {{ error }}
-              </span>
-            </div>
+            <div class="flex-grow w-full"></div>
             <ButtonComponent
               class="w-full flex-grow text-color-white element-color-primary"
               :label="isEdit ? 'SAVE' : 'POST'"
@@ -171,18 +160,20 @@ import TextAreaComponent from "@/components/ui/TextAreaComponent.vue";
 import ImageDropzoneComponent from "@/components/ui/ImageDropzoneComponent.vue";
 import { useHousingStore } from "@/stores/housingStore";
 import MainLayout from "@/layouts/MainLayout.vue";
-import { useRoute } from "vue-router";
-import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 const housingStore = useHousingStore();
 
 let route = useRoute();
-let isEdit = !!route.params.id;
+let router = useRouter();
+let isEdit = route.name === "HousesEditPage";
+
 let backRoute = isEdit ? `/houses/${route.params.id}` : "/houses";
-let validationErrors = ref([]);
 
 if (isEdit && !housingStore.selectedHouse.id) {
   housingStore.fetchHouseById(route.params.id);
+} else if (!isEdit) {
+  housingStore.resetSelectedHouse();
 }
 
 const garageOptions = [
@@ -192,12 +183,21 @@ const garageOptions = [
 
 const onPost = (event) => {
   event.preventDefault();
-  console.log("post", event);
-  // if (isEdit) {
-  //   housingStore.updateHouse(route.params.id);
-  // } else {
-  //   housingStore.createHouse();
-  // }
+  if (isEdit) {
+    //todo error toasts
+    housingStore.updateHouse(route.params.id).then((id) => {
+      if (id) {
+        router.push(`/houses/${id}`);
+      }
+    });
+  } else {
+    housingStore.createHouse().then((id) => {
+      console.log(id);
+      if (id) {
+        router.push(`/houses/${id}`);
+      }
+    });
+  }
 };
 </script>
 
