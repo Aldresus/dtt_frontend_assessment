@@ -66,6 +66,8 @@
             <ImageDropzoneComponent
               title="Upload picture (PNG or JPG)*"
               v-model="housingStore.selectedHouse.image"
+              :valid="isImageValid"
+              :required="true"
             />
           </div>
           <div>
@@ -170,7 +172,7 @@ let router = useRouter();
 let isEdit = route.name === "HousesEditPage";
 
 let isUploading = ref(false);
-
+let isImageValid = ref(true);
 let backRoute = isEdit ? `/houses/${route.params.id}` : "/houses";
 
 if (isEdit) {
@@ -186,6 +188,14 @@ const garageOptions = [
 
 const onPost = (event) => {
   event.preventDefault();
+
+  if (!housingStore.selectedHouse.image) {
+    isImageValid.value = false;
+    return;
+  } else {
+    isImageValid.value = true;
+  }
+
   isUploading.value = true;
   if (isEdit) {
     housingStore.updateHouse(route.params.id).then((id) => {
