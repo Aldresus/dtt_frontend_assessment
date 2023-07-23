@@ -3,6 +3,7 @@
     <label :for="id" class="input-field-title">{{ props.title }}</label>
     <textarea
       class="input-field element-color-tertiary-1 no-drag rounded no-border input-field-text"
+      :class="{ 'input-field-invalid': !valid }"
       rows="5"
       :placeholder="props.placeholder"
       :value="input"
@@ -10,10 +11,13 @@
       :required="props.required"
     />
   </div>
+  <div v-if="props.required && !valid" class="error-message text-color-primary">
+    {{ error }}
+  </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 
 const props = defineProps(["title", "placeholder", "modelValue", "required"]);
 
@@ -23,6 +27,19 @@ const input = computed({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
+
+const valid = ref(true);
+const error = ref("");
+const validator = () => {
+  if (!props.required) return;
+
+  valid.value = input.value.length > 0;
+  if (!valid.value) {
+    error.value = "This field cannot be empty";
+  }
+};
+
+watch(input, validator);
 
 const id = props.title.replace(new RegExp(" ", "g"), "-");
 </script>

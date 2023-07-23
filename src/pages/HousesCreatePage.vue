@@ -26,7 +26,7 @@
               title="Street name*"
               placeholder="Enter the street name"
               v-model="housingStore.selectedHouse.location.street"
-              required="true"
+              :required="true"
             />
           </div>
           <div class="flex gap-1/2 flex-wrap">
@@ -36,7 +36,7 @@
               placeholder="Enter the house number"
               v-model="housingStore.selectedHouse.location.houseNumber"
               type="number"
-              required="true"
+              :required="true"
               min="1"
             />
             <InputComponent
@@ -51,7 +51,7 @@
               title="Postal code*"
               placeholder="e.g. 1000 AA"
               v-model="housingStore.selectedHouse.location.zip"
-              required="true"
+              :required="true"
             />
           </div>
           <div>
@@ -59,7 +59,7 @@
               title="City*"
               placeholder="e.g. Utrecht"
               v-model="housingStore.selectedHouse.location.city"
-              required="true"
+              :required="true"
             />
           </div>
           <div class="my-1">
@@ -75,7 +75,7 @@
               v-model="housingStore.selectedHouse.price"
               type="number"
               prefix="€"
-              required="true"
+              :required="true"
               min="1"
             />
           </div>
@@ -87,7 +87,7 @@
               type="number"
               v-model="housingStore.selectedHouse.size"
               suffix="m2"
-              required="true"
+              :required="true"
               min="1"
             />
             <DropdownComponent
@@ -96,7 +96,7 @@
               placeholder="Select"
               :options="garageOptions"
               v-model="housingStore.selectedHouse.hasGarage"
-              required="true"
+              :required="true"
             />
           </div>
           <div class="flex flex-wrap gap-1/2">
@@ -106,7 +106,7 @@
               type="number"
               placeholder="Enter amount"
               v-model="housingStore.selectedHouse.rooms.bedrooms"
-              required="true"
+              :required="true"
               min="1"
             />
             <InputComponent
@@ -115,7 +115,7 @@
               type="number"
               placeholder="Enter amount"
               v-model="housingStore.selectedHouse.rooms.bathrooms"
-              required="true"
+              :required="true"
               min="1"
             />
           </div>
@@ -127,7 +127,7 @@
               type="number"
               min="1901"
               :max="new Date().getFullYear()"
-              required="true"
+              :required="true"
             />
           </div>
           <div>
@@ -135,7 +135,7 @@
               title="Description*"
               placeholder="Enter description"
               v-model="housingStore.selectedHouse.description"
-              required="true"
+              :required="true"
             />
           </div>
           <div class="flex align-items-center gap-1 mt-1">
@@ -163,7 +163,6 @@ import MainLayout from "@/layouts/MainLayout.vue";
 import { useRoute, useRouter } from "vue-router";
 
 const housingStore = useHousingStore();
-
 let route = useRoute();
 let router = useRouter();
 let isEdit = route.name === "HousesEditPage";

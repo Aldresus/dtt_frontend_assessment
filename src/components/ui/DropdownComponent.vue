@@ -6,7 +6,6 @@
     <select
       :id="id"
       class="input-field element-color-tertiary-1 no-drag rounded no-border input-field-text"
-      :name="props.title"
       :value="input"
       @input="input = $event.target.value"
       :required="props.required"

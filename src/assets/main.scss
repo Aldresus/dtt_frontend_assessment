@@ -124,6 +124,7 @@ button,
   font-weight: $font-weight-medium;
   font-style: italic;
   font-size: 14px;
+  color: $element-primary !important;
 }
 
 // Open Sans semi-bold
@@ -145,6 +146,10 @@ html {
   font-family: $font-secondary;
   font-weight: $font-weight-medium;
   font-size: 14px;
+}
+
+.input-field-invalid {
+  border: 1px solid $element-primary !important;
 }
 
 .button-behavior {
