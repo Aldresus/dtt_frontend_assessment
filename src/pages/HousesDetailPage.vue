@@ -9,18 +9,27 @@
           @deleteHouse="deleteHouse($event)"
           @close-modal="closeModal"
         />
-        <div class="flex-column gap-1">
-          <div>
-            <RouterLink to="/houses" class="no-decoration">
+        <div class="flex-column gap-1/2">
+          <RouterLink to="/houses" class="no-decoration">
+            <ButtonComponent
+              class="text-color-primary desktop-only no-bg no-padding"
+              icon-pos="start"
+              label="Back to overview"
+              icon="ic_back_grey@3x.png"
+              type="button"
+          /></RouterLink>
+          <div class="flex align-items-center justify-content-between mb-1">
+            <RouterLink to="/houses" class="mobile-only no-decoration">
               <ButtonComponent
-                class="text-color-primary desktop-only no-bg no-padding"
+                class="text-color-primary no-bg no-padding"
                 icon-pos="start"
-                label="Back to overview"
                 icon="ic_back_grey@3x.png"
                 type="button"
             /></RouterLink>
+            <h1>House detail</h1>
           </div>
-          <div class="flex gap-2">
+
+          <div class="flex gap-2 detail-container">
             <div class="flex-column detailed-house">
               <div
                 class="house-image-container overflow-hidden flex justify-content-center align-items-center"
@@ -130,6 +139,7 @@
               </div>
             </div>
             <div class="recommended-houses flex-column gap-1">
+              <h2>Recommended for you</h2>
               <RouterLink
                 class="no-decoration text-color-primary"
                 v-for="recommendedHouse in filteredHouses.slice(0, 3)"
@@ -188,7 +198,7 @@ let { selectedHouse, filteredHouses } = storeToRefs(houseStore);
 }
 .recommended-houses {
   width: 100%;
-  max-width: 20vw;
+  max-width: 30vw;
   height: 10vh;
 }
 
@@ -202,5 +212,20 @@ let { selectedHouse, filteredHouses } = storeToRefs(houseStore);
 .house-image {
   height: 50vh;
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .detailed-house {
+    width: 100%;
+    max-width: unset;
+  }
+  .recommended-houses {
+    width: 100%;
+    max-width: unset;
+    height: unset;
+  }
+  .detail-container {
+    flex-wrap: wrap;
+  }
 }
 </style>
