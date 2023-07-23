@@ -56,25 +56,29 @@ export const housingService = {
   /**
    * Updates a house.
    * @param {number} id id of the house to be updated.
-   * @param {FormData} updatedHouse updated house.
-   * @param {number} updatedHouse.price price of the house.
-   * @param {number} updatedHouse.bedrooms number of bedrooms.
-   * @param {number} updatedHouse.bathrooms number of bathrooms.
-   * @param {number} updatedHouse.size size of the house.
-   * @param {string} updatedHouse.streetName street name of the house.
-   * @param {string} updatedHouse.houseNumber house number of the house.
-   * @param {string} updatedHouse.numberAddition number addition of the house.
-   * @param {string} updatedHouse.zip zip code of the house.
-   * @param {string} updatedHouse.city city of the house.
-   * @param {number} updatedHouse.constructionYear construction year of the house.
-   * @param {boolean} updatedHouse.hasGarage does the house have a garage.
-   * @param {string} updatedHouse.description description of the house.
+   * @param {FormData} updatedHouseData updated house.
+   * @param {number} updatedHouseData.price price of the house.
+   * @param {number} updatedHouseData.bedrooms number of bedrooms.
+   * @param {number} updatedHouseData.bathrooms number of bathrooms.
+   * @param {number} updatedHouseData.size size of the house.
+   * @param {string} updatedHouseData.streetName street name of the house.
+   * @param {string} updatedHouseData.houseNumber house number of the house.
+   * @param {string} updatedHouseData.numberAddition number addition of the house.
+   * @param {string} updatedHouseData.zip zip code of the house.
+   * @param {string} updatedHouseData.city city of the house.
+   * @param {number} updatedHouseData.constructionYear construction year of the house.
+   * @param {boolean} updatedHouseData.hasGarage does the house have a garage.
+   * @param {string} updatedHouseData.description description of the house.
    *
    *
    * @returns {Promise} newly created house.
    */
-  async updateHouse(id, updatedHouse) {
-    const response = await axios.post(`${baseUrl}/${id}`, updatedHouse, config);
+  async updateHouse(id, updatedHouseData) {
+    const response = await axios.post(
+      `${baseUrl}/${id}`,
+      updatedHouseData,
+      config
+    );
     return response.data;
   },
 

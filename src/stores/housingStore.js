@@ -98,8 +98,9 @@ export const useHousingStore = defineStore("house", {
         .updateHouse(id, data)
         .then(async () => {
           await this.uploadImage(id, this.selectedHouse.image);
-          return response;
+          return id;
         });
+      console.log("response", response);
       return response;
     },
     async deleteHouse(id) {
