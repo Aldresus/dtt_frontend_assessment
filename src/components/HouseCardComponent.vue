@@ -1,27 +1,9 @@
 <template>
-  <ModalComponent
-    v-if="props.editable && props.house.madeByMe"
-    :showModal="showModal"
-  >
-    <h2>Modal</h2>
-    <p>Are you sure you want to delete this listing?</p>
-    <p>This action cannot be undone.</p>
-    <div class="flex gap-2">
-      <ButtonComponent
-        class="element-color-secondary text-color-white"
-        label="Go back"
-        @click.prevent="showModal = false"
-      />
-      <ButtonComponent
-        class="element-color-primary text-color-white"
-        label="Yes, delete"
-        @click.prevent="
-          emit('deleteHouse', props.house.id);
-          showModal = false;
-        "
-      />
-    </div>
-  </ModalComponent>
+  <DeleteModalComponent
+    :house-id="props.house.id"
+    :show-modal="showModal"
+    @deleteHouse="$emit('deleteHouse', props.house.id)"
+  />
   <div class="card rounded bg-2 flex gap-1">
     <div class="image-container rounded flex justify-content-center">
       <img
@@ -99,8 +81,8 @@
 <script setup>
 import { utils } from "@/commons/utils";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
-import ModalComponent from "@/components/ui/modalComponent.vue";
 import { ref } from "vue";
+import DeleteModalComponent from "@/components/DeleteModalComponent.vue";
 
 const props = defineProps({
   house: {

@@ -23,6 +23,7 @@ export const useHousingStore = defineStore("house", {
         bathrooms: null,
         bedrooms: null,
       },
+      madeByMe: null,
     },
     sortBy: "price",
     sortWay: "asc",

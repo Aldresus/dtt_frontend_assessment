@@ -2,6 +2,11 @@
   <MainLayout>
     <template v-slot>
       <div>
+        <DeleteModalComponent
+          :house-id="selectedHouse.id"
+          :show-modal="showModal"
+          @deleteHouse="deleteHouse(selectedHouse.id)"
+        />
         <div class="flex-column gap-1">
           <div>
             <RouterLink to="/houses" class="no-decoration">
@@ -25,11 +30,34 @@
                 />
               </div>
               <div class="bg-2 card house-card flex-column gap-1/2">
-                <h2>
-                  {{
-                    `${selectedHouse.location.houseNumber} ${selectedHouse.location.street}`
-                  }}
-                </h2>
+                <div
+                  :class="{
+                    'flex justify-content-between': selectedHouse.madeByMe,
+                  }"
+                >
+                  <h2>
+                    {{
+                      `${selectedHouse.location.houseNumber} ${selectedHouse.location.street}`
+                    }}
+                  </h2>
+                  <div v-if="selectedHouse.madeByMe" class="flex gap-1">
+                    <router-link
+                      class="flex align-items-center"
+                      :to="`/houses/edit/${selectedHouse.id}`"
+                    >
+                      <ButtonComponent
+                        class="no-bg no-padding"
+                        icon-pos="start"
+                        icon="ic_edit@3x.png"
+                      ></ButtonComponent>
+                    </router-link>
+                    <ButtonComponent
+                      class="no-bg no-padding"
+                      icon="ic_delete@3x.png"
+                      @click.prevent="showModal = true"
+                    ></ButtonComponent>
+                  </div>
+                </div>
                 <div class="listing-info text-color-secondary">
                   <img
                     class="house-icon"
@@ -123,8 +151,16 @@ import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 import HouseCardComponent from "@/components/HouseCardComponent.vue";
 import { utils } from "@/commons/utils";
+import { ref } from "vue";
+import DeleteModalComponent from "@/components/DeleteModalComponent.vue";
 
 const route = useRoute();
+
+const showModal = ref(false);
+
+const deleteHouse = (id) => {
+  houseStore.deleteHouse(id);
+};
 
 const houseStore = useHousingStore();
 houseStore.fetchHouseById(route.params.id);
