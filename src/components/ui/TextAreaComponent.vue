@@ -19,7 +19,25 @@
 <script setup>
 import { computed, ref, watch } from "vue";
 
-const props = defineProps(["title", "placeholder", "modelValue", "required"]);
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  placeholder: {
+    type: String,
+    required: false,
+    default: "Enter your value",
+  },
+  modelValue: {
+    required: true,
+  },
+  required: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
 
 const emit = defineEmits(["update:modelValue"]);
 

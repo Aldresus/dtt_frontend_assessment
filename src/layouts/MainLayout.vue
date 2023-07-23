@@ -10,7 +10,13 @@
 </template>
 
 <script setup>
-const props = defineProps(["backgroundImage"]);
+const props = defineProps({
+  backgroundImage: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
 </script>
 
 <style scoped>

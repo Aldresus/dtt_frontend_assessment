@@ -21,8 +21,7 @@
             placeholder="Search for a house"
             v-model="search"
           />
-
-          <SelectButtonComponent :options="selectOptions" v-model="sortBy" />
+          <SelectButtonComponent :options="sortOptions" v-model="sortBy" />
         </div>
         <div class="flex justify-content-start">
           <h2>
@@ -64,13 +63,16 @@ let houseStore = useHousingStore();
 
 const { filteredHouses, sortBy, search } = storeToRefs(houseStore);
 
+// fetch houses on page load, keeps the store up to date
 houseStore.fetchHouses();
 
+//sort houses
 watch(sortBy, (value) => {
   houseStore.sortBy = value;
   houseStore.sortHouses();
 });
 
+//search houses
 watch(search, (value) => {
   houseStore.search = value;
   houseStore.searchHouses();
@@ -80,7 +82,7 @@ const deleteHouse = (id) => {
   houseStore.deleteHouse(id);
 };
 
-const selectOptions = [
+const sortOptions = [
   {
     label: "Price",
     value: "price",

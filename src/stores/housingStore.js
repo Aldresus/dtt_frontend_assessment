@@ -41,17 +41,23 @@ export const useHousingStore = defineStore("house", {
   actions: {
     async fetchHouses() {
       housingService.getHouses().then((houses) => {
+        //get houses from api and put them in the store
         this.houses = houses;
         this.filteredHouses = houses;
+
         if (this.selectedHouse.id) {
+          // if there is a selected house, update the recommended houses
           this.setRecommendedHouses(3);
         }
       });
     },
     async fetchHouseById(id) {
       await housingService.getHouseById(id).then((house) => {
+        //get selected house from api and put it in the store
         this.selectedHouse = house[0];
+
         if (this.houses.length > 0) {
+          //if the response was not empty, update the recommended houses
           this.setRecommendedHouses(3);
         }
       });
@@ -84,33 +90,40 @@ export const useHousingStore = defineStore("house", {
     },
     async createHouse() {
       let data = this.selectedHouseToFormData();
+
       let response = await housingService
         .createHouse(data)
         .then(async (response) => {
+          //get the id from the created house and upload the associated image
           await this.uploadImage(response.id, this.selectedHouse.image);
-          return response;
+          return response; //return the id so the user can be redirected to the created house
         });
       return response.id;
     },
     async updateHouse(id) {
       let data = this.selectedHouseToFormData();
       return await housingService.updateHouse(id, data).then(async () => {
+        //update the house and since it does not return the id, get it from the selected house
         await this.uploadImage(id, this.selectedHouse.image);
-        return id;
+        return id; // return the id so the user can be redirected to the updated house
       });
     },
     async deleteHouse(id) {
       await housingService.deleteHouse(id).then(() => {
+        //delete the house and update refresh the houses
         this.fetchHouses();
       });
     },
     async uploadImage(id, image) {
-      let data = new FormData();
+      //convert state to form data for the post requests
+      let data = new FormData(); //
       data.append("image", image);
+
       await housingService.uploadHouseImage(id, data);
     },
     searchHouses() {
       this.filteredHouses = this.houses.filter((house) => {
+        //filter the houses based on the search input
         return (
           house.location.city
             .toLowerCase()
@@ -124,6 +137,7 @@ export const useHousingStore = defineStore("house", {
     },
     sortHouses() {
       this.filteredHouses.sort((a, b) => {
+        //sort the houses based on the sort input
         if (this.sortWay === "asc") {
           //todo implement sort by asc and desc
           return b[this.sortBy] - a[this.sortBy];
@@ -156,12 +170,14 @@ export const useHousingStore = defineStore("house", {
       };
     },
     setRecommendedHouses(Number) {
-      //number of houses with 20% similar price, size, rooms and garage as the selected house
+      //store a number of houses with 20% similar price, size, rooms and garage as the selected house
 
+      //get the values of the selected house
       let price = this.selectedHouse.price;
       let size = this.selectedHouse.size;
       let rooms = this.selectedHouse.rooms;
 
+      //calculate the range of the values
       let minPrice = price - price * 0.2;
       let maxPrice = price + price * 0.2;
       let minSize = size - size * 0.2;
@@ -172,6 +188,7 @@ export const useHousingStore = defineStore("house", {
       let maxBathrooms = rooms.bathrooms + rooms.bathrooms * 0.2;
 
       let recommendedHouses = this.houses.filter((house) => {
+        //filter the houses based on the range of the values
         return (
           house.id !== this.selectedHouse.id &&
           house.price >= minPrice &&
@@ -187,7 +204,8 @@ export const useHousingStore = defineStore("house", {
       });
 
       if (recommendedHouses.length < Number) {
-        //if there are not enough houses with similar values, fill the rest with random houses which are not the selected house
+        //if there are not enough houses with similar values,
+        //fill the rest with random houses which are not the selected house
 
         while (recommendedHouses.length < Number) {
           let availableHouses = this.houses.filter((house) => {

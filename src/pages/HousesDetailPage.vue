@@ -185,6 +185,7 @@ const houseStore = useHousingStore();
 houseStore.fetchHouseById(route.params.id);
 
 onBeforeRouteUpdate((to, from, next) => {
+  // react to route changes when a recommended house is clicked
   houseStore.fetchHouseById(to.params.id);
   next();
 });

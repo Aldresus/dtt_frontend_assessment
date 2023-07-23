@@ -22,13 +22,29 @@
 <script setup>
 import { computed } from "vue";
 
-const props = defineProps([
-  "title",
-  "placeholder",
-  "options",
-  "modelValue",
-  "required",
-]);
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  placeholder: {
+    type: String,
+    required: false,
+    default: "Choose a value",
+  },
+  options: {
+    type: Array,
+    required: true,
+  },
+  modelValue: {
+    required: true,
+  },
+  required: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
 const emit = defineEmits(["update:modelValue"]);
 
 const input = computed({
@@ -36,6 +52,7 @@ const input = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
+//generate a unique id for the input by its title
 const id = props.title.replace(new RegExp(" ", "g"), "-");
 </script>
 

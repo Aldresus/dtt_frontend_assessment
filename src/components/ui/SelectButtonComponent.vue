@@ -8,7 +8,7 @@
           ? 'element-color-primary'
           : 'element-color-tertiary-2',
       ]"
-      @click="setActive(props.options[0].value)"
+      @click="$emit('update:modelValue', props.options[0].value)"
     >
       {{ props.options[0].label }}
     </button>
@@ -26,7 +26,7 @@
           ? 'element-color-primary'
           : 'element-color-tertiary-2',
       ]"
-      @click="setActive(option.value)"
+      @click="$emit('update:modelValue', option.value)"
     >
       {{ option.label }}
     </button>
@@ -39,7 +39,12 @@
           ? 'element-color-primary'
           : 'element-color-tertiary-2',
       ]"
-      @click="setActive(props.options[props.options.length - 1].value)"
+      @click="
+        $emit(
+          'update:modelValue',
+          props.options[props.options.length - 1].value
+        )
+      "
     >
       {{ props.options[props.options.length - 1].label }}
     </button>
@@ -47,18 +52,16 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-//todo avoid clicking on active button
-const props = defineProps(["modelValue", "options"]);
-const emit = defineEmits(["update:modelValue"]);
-const active = computed({
-  get: () => props.modelValue,
-  set: (value) => emit("update:modelValue", value),
+const props = defineProps({
+  modelValue: {
+    required: true,
+  },
+  options: {
+    type: Array,
+    required: true,
+  },
 });
-
-const setActive = (value) => {
-  active.value = value;
-};
+const emit = defineEmits(["update:modelValue"]);
 </script>
 
 <style scoped>

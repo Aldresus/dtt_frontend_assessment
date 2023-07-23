@@ -83,30 +83,32 @@ const input = computed({
 });
 
 const imagePreview = ref(input.value);
-const id = props.title.replace(new RegExp(" ", "g"), "-");
-
-console.log("imagePreview", imagePreview.value, input.value, props.modelValue);
-
 watch(input, (value) => {
   imagePreview.value = value;
 });
 
 const upload = (event) => {
+  //when the user uploads an image, read it and set the imagePreview to the base64 string
   const image = event.target.files[0];
   const reader = new FileReader();
-  input.value = image;
+
+  input.value = image; //for the API, we keep the image as a file
+
   reader.readAsDataURL(image);
   reader.onload = (e) => {
-    console.log("reader.result", e.target.result);
     imagePreview.value = e.target.result;
   };
 };
 
 const clear = (event) => {
+  //clear the input and the imagePreview
   event.preventDefault();
   input.value = null;
   imagePreview.value = "";
 };
+
+//generate a unique id for the input by its title
+const id = props.title.replace(new RegExp(" ", "g"), "-");
 </script>
 
 <style scoped>

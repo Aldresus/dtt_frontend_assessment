@@ -12,12 +12,12 @@
       class="search no-border w-full input-field no-bg input-field-text"
       :placeholder="props.placeholder"
       :value="props.modelValue"
-      @input="input = $event.target.value"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
     <button
-      v-if="input"
+      v-if="props.modelValue"
       class="button-behavior no-bg no-border flex align-items-center"
-      @click="input = ''"
+      @click="$emit('update:modelValue', '')"
     >
       <img
         src="@/assets/icons/ic_clear@3x.png"
@@ -29,15 +29,8 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-
 let props = defineProps(["placeholder", "modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
-
-const input = computed({
-  get: () => props.modelValue,
-  set: (value) => emit("update:modelValue", value),
-});
 </script>
 
 <style scoped>

@@ -1,12 +1,3 @@
-<script setup>
-import HeaderComponent from "@/components/ui/HeaderComponent.vue";
-import { useHousingStore } from "@/stores/housingStore";
-
-const housingStore = useHousingStore();
-
-housingStore.fetchHouses();
-</script>
-
 <template>
   <header class="header-position">
     <HeaderComponent />
@@ -15,6 +6,15 @@ housingStore.fetchHouses();
     <RouterView />
   </main>
 </template>
+
+<script setup>
+import HeaderComponent from "@/components/ui/HeaderComponent.vue";
+import { useHousingStore } from "@/stores/housingStore";
+
+const housingStore = useHousingStore();
+// fetch houses on app load, useful when refreshing inside details page
+housingStore.fetchHouses();
+</script>
 
 <style scoped>
 .header-position {

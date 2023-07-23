@@ -20,11 +20,32 @@
 </template>
 
 <script setup>
-const props = defineProps(["label", "icon", "iconPos", "type"]);
+const props = defineProps({
+  label: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  icon: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  iconPos: {
+    type: String,
+    required: false,
+    default: "start",
+  },
+  type: {
+    type: String,
+    required: false,
+    default: "button",
+  },
+});
 
 const emit = defineEmits(["clicked"]);
 function getImageUrl() {
-  // This path must be correct for your file
+  //get the icon by its name
   let url = new URL(`@/assets/icons/`, import.meta.url);
   return `${url}/${props.icon}`;
 }

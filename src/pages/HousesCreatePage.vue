@@ -169,11 +169,16 @@ import { ref } from "vue";
 const housingStore = useHousingStore();
 let route = useRoute();
 let router = useRouter();
-let isEdit = route.name === "HousesEditPage";
 
+let isEdit = route.name === "HousesEditPage";
 let isUploading = ref(false);
-let isImageValid = ref(true);
 let backRoute = isEdit ? `/houses/${route.params.id}` : "/houses";
+
+//image upload input is different from the others, so we need to check it separately
+// when creating, the image is from a File which the user uploads by the input
+// when editing an existing house, the image is an url string which breaks the input and therefore the default html validation
+// I did not find a way to make the input work with both types, so I decided to disable the html validation and do it manually
+let isImageValid = ref(true);
 
 if (isEdit) {
   housingStore.fetchHouseById(route.params.id);
@@ -190,13 +195,14 @@ const onPost = (event) => {
   event.preventDefault();
 
   if (!housingStore.selectedHouse.image) {
+    //validate the image dropzone manually
     isImageValid.value = false;
     return;
   } else {
     isImageValid.value = true;
   }
 
-  isUploading.value = true;
+  isUploading.value = true; //show loading button
   if (isEdit) {
     housingStore.updateHouse(route.params.id).then((id) => {
       if (id) {

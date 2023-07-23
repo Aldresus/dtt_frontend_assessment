@@ -89,11 +89,16 @@ const input = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
+//by default, the field is valid to avoid showing errors on page load
+//the in-component validation is only here for feedback to the user
 const valid = ref(true);
 const error = ref("");
+
 const validator = () => {
+  //if the field is not required, don't validate
   if (!props.required) return;
 
+  //if the field is not numbers, we only check if it's empty
   if (props.type !== "number") {
     valid.value = input.value.length > 0;
     if (!valid.value) {
@@ -101,6 +106,7 @@ const validator = () => {
     }
   }
   if (props.type === "number") {
+    //if the field is numbers, we check if it's empty and if it's in the range
     if (props.min && props.max) {
       valid.value = input.value >= props.min && input.value <= props.max;
       if (!valid.value) {
