@@ -1,7 +1,7 @@
 <template>
   <div
     class="overflow-hidden"
-    :class="{ 'background-image': props.backgroundImage }"
+    :class="{ 'background-image overflow-hidden': props.backgroundImage }"
   >
     <div class="content">
       <slot></slot>
