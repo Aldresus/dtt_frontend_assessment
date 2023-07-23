@@ -142,7 +142,8 @@
             <div class="flex-grow w-full"></div>
             <ButtonComponent
               class="w-full flex-grow text-color-white element-color-primary"
-              :label="isEdit ? 'SAVE' : 'POST'"
+              :label="isUploading ? '' : isEdit ? 'SAVE' : 'POST'"
+              :class="{ loading: isUploading }"
               type="submit"
             />
           </div>
@@ -161,11 +162,14 @@ import ImageDropzoneComponent from "@/components/ui/ImageDropzoneComponent.vue";
 import { useHousingStore } from "@/stores/housingStore";
 import MainLayout from "@/layouts/MainLayout.vue";
 import { useRoute, useRouter } from "vue-router";
+import { ref } from "vue";
 
 const housingStore = useHousingStore();
 let route = useRoute();
 let router = useRouter();
 let isEdit = route.name === "HousesEditPage";
+
+let isUploading = ref(false);
 
 let backRoute = isEdit ? `/houses/${route.params.id}` : "/houses";
 
@@ -182,16 +186,17 @@ const garageOptions = [
 
 const onPost = (event) => {
   event.preventDefault();
+  isUploading.value = true;
   if (isEdit) {
-    //todo error toasts
     housingStore.updateHouse(route.params.id).then((id) => {
       if (id) {
+        isUploading.value = false;
         router.push(`/houses/${id}`);
       }
     });
   } else {
     housingStore.createHouse().then((id) => {
-      console.log(id);
+      isUploading.value = false;
       if (id) {
         router.push(`/houses/${id}`);
       }
