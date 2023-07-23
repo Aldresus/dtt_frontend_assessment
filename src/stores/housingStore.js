@@ -4,6 +4,7 @@ export const useHousingStore = defineStore("house", {
   state: () => ({
     houses: [],
     filteredHouses: [],
+    recommendedHouses: [],
     selectedHouse: {
       id: null,
       location: {
@@ -42,11 +43,17 @@ export const useHousingStore = defineStore("house", {
       housingService.getHouses().then((houses) => {
         this.houses = houses;
         this.filteredHouses = houses;
+        if (this.selectedHouse.id) {
+          this.setRecommendedHouses(3);
+        }
       });
     },
     async fetchHouseById(id) {
       await housingService.getHouseById(id).then((house) => {
         this.selectedHouse = house[0];
+        if (this.houses.length > 0) {
+          this.setRecommendedHouses(3);
+        }
       });
     },
     selectedHouseToFormData() {
@@ -151,6 +158,55 @@ export const useHousingStore = defineStore("house", {
           bedrooms: null,
         },
       };
+    },
+    setRecommendedHouses(Number) {
+      //number of houses with 20% similar price, size, rooms and garage as the selected house
+
+      let price = this.selectedHouse.price;
+      let size = this.selectedHouse.size;
+      let rooms = this.selectedHouse.rooms;
+
+      let minPrice = price - price * 0.2;
+      let maxPrice = price + price * 0.2;
+      let minSize = size - size * 0.2;
+      let maxSize = size + size * 0.2;
+      let minRooms = rooms.bedrooms - rooms.bedrooms * 0.2;
+      let maxRooms = rooms.bedrooms + rooms.bedrooms * 0.2;
+      let minBathrooms = rooms.bathrooms - rooms.bathrooms * 0.2;
+      let maxBathrooms = rooms.bathrooms + rooms.bathrooms * 0.2;
+
+      let recommendedHouses = this.houses.filter((house) => {
+        return (
+          house.id !== this.selectedHouse.id &&
+          house.price >= minPrice &&
+          house.price <= maxPrice &&
+          house.size >= minSize &&
+          house.size <= maxSize &&
+          house.rooms.bedrooms >= minRooms &&
+          house.rooms.bedrooms <= maxRooms &&
+          house.rooms.bathrooms >= minBathrooms &&
+          house.rooms.bathrooms <= maxBathrooms &&
+          house.hasGarage === this.selectedHouse.hasGarage
+        );
+      });
+
+      if (recommendedHouses.length < Number) {
+        //if there are not enough houses with similar values, fill the rest with random houses which are not the selected house
+
+        while (recommendedHouses.length < Number) {
+          let availableHouses = this.houses.filter((house) => {
+            return (
+              house.id !== this.selectedHouse.id &&
+              !recommendedHouses.includes(house)
+            );
+          });
+          recommendedHouses.push(
+            availableHouses[Math.floor(Math.random() * availableHouses.length)]
+          );
+        }
+      }
+
+      this.recommendedHouses = recommendedHouses.slice(0, Number); //return the first "number" recommended houses
     },
   },
 });

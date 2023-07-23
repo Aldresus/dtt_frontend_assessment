@@ -141,8 +141,9 @@
             <div class="recommended-houses flex-column gap-1">
               <h2>Recommended for you</h2>
               <RouterLink
+                v-if="recommendedHouses.length > 0"
                 class="no-decoration text-color-primary"
-                v-for="recommendedHouse in filteredHouses.slice(0, 3)"
+                v-for="recommendedHouse in recommendedHouses"
                 :to="`/houses/${recommendedHouse.id}`"
               >
                 <HouseCardComponent :house="recommendedHouse" small
@@ -188,7 +189,7 @@ onBeforeRouteUpdate((to, from, next) => {
   next();
 });
 
-let { selectedHouse, filteredHouses } = storeToRefs(houseStore);
+let { selectedHouse, recommendedHouses } = storeToRefs(houseStore);
 </script>
 
 <style scoped>

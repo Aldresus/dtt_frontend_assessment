@@ -88,6 +88,8 @@ import DeleteModalComponent from "@/components/DeleteModalComponent.vue";
 
 const props = defineProps({
   house: {
+    type: Object,
+    required: true,
     rooms: {
       required: true,
       type: Object,
