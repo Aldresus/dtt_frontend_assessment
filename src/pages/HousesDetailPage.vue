@@ -19,7 +19,7 @@
                 class="house-image-container overflow-hidden flex justify-content-center align-items-center"
               >
                 <img
-                  class="w-full no-drag"
+                  class="w-full no-drag house-image"
                   :src="selectedHouse.image"
                   alt="house preview"
                 />
@@ -123,6 +123,9 @@ let { selectedHouse, filteredHouses } = storeToRefs(houseStore);
 
 .house-image-container {
   width: 100%;
+}
+.house-image {
   height: 50vh;
+  object-fit: cover;
 }
 </style>
