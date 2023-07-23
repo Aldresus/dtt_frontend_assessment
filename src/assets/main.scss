@@ -10,7 +10,7 @@ $element-background-2: #ffffff;
 $text-primary: #000000;
 $text-secondary: #4a4b4c;
 $text-tertiary: #c3c3c3;
-$text-hyperlink: #4a4b4c;
+$text-hyperlink: #067bc2;
 $text-white: #ffffff;
 
 $font-primary: "Montserrat", sans-serif;
@@ -62,7 +62,7 @@ h2 {
   color: $text-tertiary;
 }
 
-.text-color-hyperlink {
+a {
   color: $text-hyperlink;
 }
 
@@ -198,6 +198,10 @@ html {
 .contained-image {
   height: 100%;
   width: auto;
+}
+
+p {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
