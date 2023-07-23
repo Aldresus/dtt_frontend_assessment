@@ -170,7 +170,7 @@ let isEdit = route.name === "HousesEditPage";
 
 let backRoute = isEdit ? `/houses/${route.params.id}` : "/houses";
 
-if (isEdit && !housingStore.selectedHouse.id) {
+if (isEdit) {
   housingStore.fetchHouseById(route.params.id);
 } else if (!isEdit) {
   housingStore.resetSelectedHouse();

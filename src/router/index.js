@@ -31,7 +31,6 @@ const routes = [
       },
     ],
   },
-
   {
     path: "/about",
     name: "AboutPage",

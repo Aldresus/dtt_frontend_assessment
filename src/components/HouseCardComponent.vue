@@ -1,4 +1,27 @@
 <template>
+  <ModalComponent
+    v-if="props.editable && props.house.madeByMe"
+    :showModal="showModal"
+  >
+    <h2>Modal</h2>
+    <p>Are you sure you want to delete this listing?</p>
+    <p>This action cannot be undone.</p>
+    <div class="flex gap-2">
+      <ButtonComponent
+        class="element-color-secondary text-color-white"
+        label="Go back"
+        @click.prevent="showModal = false"
+      />
+      <ButtonComponent
+        class="element-color-primary text-color-white"
+        label="Yes, delete"
+        @click.prevent="
+          emit('deleteHouse', props.house.id);
+          showModal = false;
+        "
+      />
+    </div>
+  </ModalComponent>
   <div class="card rounded bg-2 flex gap-1">
     <div class="image-container rounded flex justify-content-center">
       <img
@@ -7,13 +30,37 @@
         alt="house image"
       />
     </div>
-    <div class="house-details flex-column justify-content-between">
-      <h2 :class="{ tabs: props.small }">
-        {{
-          `${props.house.location.houseNumber} ${props.house.location.street}`
-        }}
-      </h2>
-      <div class="text-color-secondary">
+    <div class="house-details flex-column justify-content-between flex-grow">
+      <div
+        :class="{
+          flex: props.house.madeByMe,
+          'justify-content-between': props.house.madeByMe,
+        }"
+      >
+        <h2 class="" :class="{ tabs: props.small }">
+          {{
+            `${props.house.location.houseNumber} ${props.house.location.street}`
+          }}
+        </h2>
+        <div v-if="props.editable && props.house.madeByMe" class="flex gap-1">
+          <router-link
+            class="flex align-items-center"
+            :to="`/houses/edit/${props.house.id}`"
+          >
+            <ButtonComponent
+              class="no-bg no-padding"
+              icon-pos="start"
+              icon="ic_edit@3x.png"
+            ></ButtonComponent
+          ></router-link>
+          <ButtonComponent
+            class="no-bg no-padding"
+            icon="ic_delete@3x.png"
+            @click.prevent="showModal = true"
+          ></ButtonComponent>
+        </div>
+      </div>
+      <div class="listing-info text-color-secondary">
         {{ `€ ${utils.formatPrice(props.house.price)}` }}
       </div>
       <div class="listing-info text-color-tertiary">
@@ -51,6 +98,9 @@
 
 <script setup>
 import { utils } from "@/commons/utils";
+import ButtonComponent from "@/components/ui/ButtonComponent.vue";
+import ModalComponent from "@/components/ui/modalComponent.vue";
+import { ref } from "vue";
 
 const props = defineProps({
   house: {
@@ -74,13 +124,26 @@ const props = defineProps({
       required: true,
       type: String,
     },
+    madeByMe: {
+      required: true,
+      type: Boolean,
+    },
   },
   small: {
     required: false,
     type: Boolean,
     default: false,
   },
+  editable: {
+    required: false,
+    type: Boolean,
+    default: false,
+  },
 });
+
+const emit = defineEmits(["deleteHouse"]);
+
+let showModal = ref(false);
 </script>
 
 <style scoped>

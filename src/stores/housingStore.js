@@ -95,7 +95,9 @@ export const useHousingStore = defineStore("house", {
       return response;
     },
     async deleteHouse(id) {
-      await housingService.deleteHouse(id);
+      await housingService.deleteHouse(id).then(() => {
+        this.fetchHouses();
+      });
     },
     async uploadImage(id, image) {
       let data = new FormData();
@@ -142,6 +144,7 @@ export const useHousingStore = defineStore("house", {
         size: null,
         description: "",
         hasGarage: false,
+        madeByMe: null,
         rooms: {
           bathrooms: null,
           bedrooms: null,

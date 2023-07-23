@@ -39,7 +39,11 @@
           :to="`/houses/${house.id}`"
           :key="house.id"
         >
-          <HouseCardComponent :house="house" />
+          <HouseCardComponent
+            :house="house"
+            :editable="true"
+            @deleteHouse="deleteHouse($event)"
+          />
         </RouterLink>
       </div>
     </template>
@@ -74,6 +78,10 @@ watch(search, (value) => {
   houseStore.searchHouses();
   console.log("search", value);
 });
+
+const deleteHouse = (id) => {
+  houseStore.deleteHouse(id);
+};
 
 const selectOptions = [
   {
