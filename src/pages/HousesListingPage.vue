@@ -66,7 +66,7 @@
             src="@/assets/icons/img_empty_houses@3x.png"
             alt="no houses found"
           />
-          <div class="text-center">
+          <div class="text-center empty-state-message">
             <p>No results found.</p>
             <p>Please try another keyword.</p>
           </div>

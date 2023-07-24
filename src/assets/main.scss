@@ -19,12 +19,20 @@ $font-weight-bold: 700;
 $font-weight-semi-bold: 600;
 $font-weight-medium: 400;
 
+/* ==========================================================================
+   reset
+   ========================================================================== */
 html,
 body,
 h1,
-h2 {
+h2,
+p {
   margin: 0;
 }
+
+/* ==========================================================================
+   Backgrounds
+   ========================================================================== */
 
 .element-color-primary {
   background-color: $element-primary;
@@ -50,6 +58,10 @@ h2 {
   background-color: $element-background-2;
 }
 
+/* ==========================================================================
+   text colors
+   ========================================================================== */
+
 .text-color-primary {
   color: $text-primary;
 }
@@ -70,7 +82,13 @@ a {
   color: $text-white;
 }
 
-// Montserrat bold
+/* ==========================================================================
+   fonts
+   ========================================================================== */
+
+/* Montserrat bold
+   ========================================================================== */
+
 h1 {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
@@ -92,7 +110,8 @@ button,
   font-size: 18px;
 }
 
-// Montserrat semi-bold
+/* Montserrat semi-bold
+   ========================================================================== */
 .back-button-label {
   font-family: $font-primary;
   font-weight: $font-weight-semi-bold;
@@ -105,7 +124,6 @@ button,
   font-size: 14px;
 }
 
-// Montserrat medium
 .header-menu {
   font-family: $font-primary;
   font-weight: $font-weight-medium;
@@ -127,14 +145,16 @@ button,
   color: $element-primary !important;
 }
 
-// Open Sans semi-bold
+/* Open Sans semi-bold
+   ========================================================================== */
 .listing-info {
   font-family: $font-secondary;
   font-weight: $font-weight-semi-bold;
   font-size: 16px;
 }
 
-// Open Sans regular
+/* Open Sans regular
+   ========================================================================== */
 html {
   font-family: $font-secondary;
   font-weight: $font-weight-medium;
@@ -142,6 +162,9 @@ html {
   background-color: $element-background-1;
 }
 
+/* ==========================================================================
+   input fields
+   ========================================================================== */
 .input-field {
   font-family: $font-secondary;
   font-weight: $font-weight-medium;
@@ -152,6 +175,24 @@ html {
   border: 1px solid $element-primary !important;
 }
 
+.input-field-container {
+  padding: 0 1rem;
+  width: 20rem;
+}
+.input-field-container:focus-within {
+  border: 1px solid;
+}
+
+.input-field {
+  padding: 10px;
+}
+.input-field:focus {
+  outline: none;
+}
+
+/* ==========================================================================
+   buttons
+   ========================================================================== */
 .button-behavior {
   cursor: pointer;
   transition: ease-in-out 0.2s;
@@ -172,29 +213,9 @@ html {
   opacity: 0.8;
 }
 
-.input-field-container {
-  padding: 0 1rem;
-  width: 20rem;
-}
-.input-field-container:focus-within {
-  border: 1px solid;
-}
-
-.input-field {
-  padding: 10px;
-}
-.input-field:focus {
-  outline: none;
-}
-
-.shadow {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.icon-shadow {
-  filter: drop-shadow(0px 10px 15px -3px rgba(0, 0, 0, 0.1));
-}
-
+/* ==========================================================================
+   images
+   ========================================================================== */
 .image-container {
   height: 100%;
   overflow: hidden;
@@ -205,53 +226,37 @@ html {
   width: auto;
 }
 
-p {
-  margin: 0;
+.house-icon {
+  height: 0.8rem;
+  width: auto;
+  margin-right: 0.5rem;
 }
 
+
 @media (max-width: 768px) {
-  // Montserrat bold
+  /* ==========================================================================
+   font mobile sizes
+   ========================================================================== */
   h1 {
     font-size: 18px;
   }
 
-  h2 {
+  h2, .empty-state-message {
     font-size: 14px;
   }
 
   .button,
-  .tabs {
-    font-size: 12px;
-  }
-
-  // Montserrat semi-bold
-  .input-field-title {
-    font-size: 12px;
-  }
-
-  // Montserrat medium
-  .empty-state-message {
-    font-size: 14px;
-  }
-
-  .error-message {
-    font-size: 12px;
-  }
-
-  // Open Sans semi-bold
-  .listing-info {
-    font-size: 12px;
-  }
-
-  // Open Sans regular
-  html {
-    font-size: 12px;
-  }
-
+  .tabs,
+  .input-field-title,
+  .error-message,
+  html,
+  .listing-info,
   .input-field {
     font-size: 12px;
   }
-
+  /* ==========================================================================
+     input fields
+     ========================================================================== */
   .input-field-container {
     width: 100%;
   }

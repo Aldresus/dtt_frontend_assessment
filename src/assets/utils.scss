@@ -1,3 +1,7 @@
+/* ==========================================================================
+   flex
+   ========================================================================== */
+
 .flex {
   display: flex;
 }
@@ -53,6 +57,22 @@
 .gap-3 {
   gap: 3rem;
 }
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+/* ==========================================================================
+    margins
+   ========================================================================== */
 
 .m-1 {
   margin: 1rem;
@@ -119,8 +139,28 @@
   margin-left: auto;
 }
 
-.align-items-center {
-  align-items: center;
+.no-margin {
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+    paddings
+   ========================================================================== */
+
+.no-padding {
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   styles
+   ========================================================================== */
+
+.shadow {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.icon-shadow {
+  filter: drop-shadow(0px 10px 15px -3px rgba(0, 0, 0, 0.1));
 }
 
 .rounded {
@@ -139,12 +179,9 @@
   background: none !important;
 }
 
-.no-padding {
-  padding: 0 !important;
-}
-
-.no-margin {
-  margin: 0 !important;
+.card {
+  width: calc(100% - 2rem);
+  padding: 1rem;
 }
 
 .no-drag {
@@ -155,6 +192,10 @@
   -ms-user-select: none;
 }
 
+/* ==========================================================================
+   text
+   ========================================================================== */
+
 .text-end {
   text-align: end !important;
 }
@@ -164,25 +205,16 @@
 .text-start {
   text-align: start !important;
 }
+
+/* ==========================================================================
+   width and height
+   ========================================================================== */
+
+/* width
+   ========================================================================== */
 .w-full {
   width: 100%;
 }
-
-.h-full {
-  height: 100%;
-}
-
-.house-icon {
-  height: 0.8rem;
-  width: auto;
-  margin-right: 0.5rem;
-}
-
-.card {
-  width: calc(100% - 2rem);
-  padding: 1rem;
-}
-
 .w-screen {
   width: calc(100vw);
   max-width: 100%; //avoid horizontal scroll
@@ -197,6 +229,15 @@
   width: 0;
 }
 
+/* height
+   ========================================================================== */
+.h-full {
+  height: 100%;
+}
+
+/* ==========================================================================
+   position
+   ========================================================================== */
 .z--1 {
   z-index: -1;
 }
@@ -204,21 +245,21 @@
 .p-absolute {
   position: absolute;
 }
+
 .left-0 {
   left: 0;
 }
+
 .right-0 {
   right: 0;
 }
+
 .top-0 {
   top: 0;
 }
+
 .bottom-0 {
   bottom: 0;
-}
-
-.v-hidden {
-  visibility: hidden;
 }
 
 .pseudo-relative {
@@ -227,9 +268,20 @@
   height: 0;
 }
 
+/* ==========================================================================
+   visibility
+   ========================================================================== */
+.v-hidden {
+  visibility: hidden;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
+
+/* ==========================================================================
+   display
+   ========================================================================== */
 
 .desktop-only {
   display: flex;
@@ -238,6 +290,18 @@
   display: none;
 }
 
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: flex;
+  }
+}
+
+/* ==========================================================================
+   animations
+   ========================================================================== */
 .loading:after {
   overflow: hidden;
   display: inline-block;
@@ -258,14 +322,5 @@
 @-webkit-keyframes ellipsis {
   to {
     width: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: flex;
   }
 }
