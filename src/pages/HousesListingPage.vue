@@ -28,7 +28,17 @@
             placeholder="Search for a house"
             v-model="search"
           />
-          <SelectButtonComponent :options="sortOptions" v-model="sortBy" />
+          <div class="flex gap-1/2">
+            <ButtonComponent
+              class="element-color-primary text-color-white"
+              :label="sortWay === 'asc' ? 'Lower' : 'Higher'"
+              @click="houseStore.toggleSortWay()"
+            />
+            <!--        sort way button        -->
+
+            <SelectButtonComponent :options="sortOptions" v-model="sortBy" />
+            <!--        sort buttons        -->
+          </div>
         </div>
         <!--        search bar and sort buttons        -->
 
@@ -89,7 +99,7 @@ import MainLayout from "@/layouts/MainLayout.vue";
 
 let houseStore = useHousingStore();
 
-const { filteredHouses, sortBy, search } = storeToRefs(houseStore);
+const { filteredHouses, sortBy, sortWay, search } = storeToRefs(houseStore);
 
 // fetch houses on page load, keeps the store up to date
 houseStore.fetchHouses();
@@ -120,8 +130,8 @@ const sortOptions = [
     value: "size",
   },
   {
-    label: "Bedrooms",
-    value: "rooms.bedrooms",
+    label: "Construction year",
+    value: "constructionYear",
   },
 ];
 </script>

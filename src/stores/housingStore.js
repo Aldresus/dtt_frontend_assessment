@@ -44,6 +44,7 @@ export const useHousingStore = defineStore("house", {
         //get houses from api and put them in the store
         this.houses = houses;
         this.filteredHouses = houses;
+        this.sortHouses();
 
         if (this.selectedHouse.id) {
           // if there is a selected house, update the recommended houses
@@ -135,13 +136,19 @@ export const useHousingStore = defineStore("house", {
         );
       });
     },
+    toggleSortWay() {
+      //toggle the sort way
+      this.sortWay = this.sortWay === "asc" ? "desc" : "asc";
+      this.sortHouses();
+    },
     sortHouses() {
       this.filteredHouses.sort((a, b) => {
         //sort the houses based on the sort input
-        if (this.sortWay === "asc") {
-          //todo implement sort by asc and desc
+        if (this.sortWay === "desc") {
+          //ascending
           return b[this.sortBy] - a[this.sortBy];
         } else {
+          //descending
           return a[this.sortBy] - b[this.sortBy];
         }
       });
