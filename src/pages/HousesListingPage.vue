@@ -28,15 +28,19 @@
             placeholder="Search for a house"
             v-model="search"
           />
-          <div class="flex gap-1/2">
+          <div class="flex gap-1/2 sort-container">
             <ButtonComponent
-              class="element-color-primary text-color-white"
+              class="element-color-primary text-color-white sort-select"
               :label="sortWay === 'asc' ? 'Lower' : 'Higher'"
               @click="houseStore.toggleSortWay()"
             />
             <!--        sort way button        -->
 
-            <SelectButtonComponent :options="sortOptions" v-model="sortBy" />
+            <SelectButtonComponent
+              class="sort-select"
+              :options="sortOptions"
+              v-model="sortBy"
+            />
             <!--        sort buttons        -->
           </div>
         </div>
@@ -140,5 +144,13 @@ const sortOptions = [
 .empty-image {
   width: 100%;
   max-width: 300px;
+}
+@media (max-width: 768px) {
+  .sort-select {
+    width: 100%;
+  }
+  .sort-container {
+    flex-wrap: wrap;
+  }
 }
 </style>

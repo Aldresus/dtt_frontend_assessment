@@ -1,6 +1,6 @@
 <template>
   <button
-    class="button-behavior button-padding button-icon no-border rounded flex align-items-center justify-content-center"
+    class="button button-behavior button-padding button-icon no-border rounded flex align-items-center justify-content-center"
     @click="$emit('clicked', $event)"
     :type="props.type"
   >
