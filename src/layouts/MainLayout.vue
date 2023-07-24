@@ -6,7 +6,9 @@
     <div class="content">
       <slot></slot>
     </div>
+    <!--        Main content        -->
   </div>
+  <!--        Main layout        -->
 </template>
 
 <script setup>

@@ -8,9 +8,14 @@
         type="button"
       />
     </div>
+    <!--        clear button        -->
+    <!--        It uses a pseudo relative technique, so it has a relative like position without having to deal with the empty space relative position creates.       -->
+
     <label :for="id" class="input-field-title">
       {{ props.title }}
     </label>
+    <!--        Input title        -->
+
     <label
       :for="id"
       class="dropzone text-color-tertiary rounded flex justify-content-center align-items-center"
@@ -22,6 +27,8 @@
         src="@/assets/icons/ic_upload@3x.png"
         alt="upload icon"
       />
+      <!--        Dropzone icon        -->
+
       <span
         v-if="props.modelValue"
         class="flex justify-content-center image-container rounded"
@@ -32,7 +39,9 @@
           alt="house preview"
         />
       </span>
+      <!--        Image preview        -->
     </label>
+    <!--        Label which contains the dropzone ui        -->
 
     <input
       :id="id"
@@ -41,10 +50,15 @@
       @change="upload($event)"
       :name="props.name"
     />
+    <!--        Since we cant style the default input as we want, we hide it.        -->
+    <!--        The input is never required since we use a manual validation           -->
   </div>
+  <!--        input container        -->
+
   <div v-if="props.required && !valid" class="error-message text-color-primary">
     You must upload an image
   </div>
+  <!--        error message        -->
 </template>
 
 <script setup>

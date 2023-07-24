@@ -3,6 +3,8 @@
     <label :for="id" class="input-field-title">
       {{ props.title }}
     </label>
+    <!--        Input title        -->
+
     <select
       :id="id"
       class="input-field element-color-tertiary-1 no-drag rounded no-border input-field-text"
@@ -16,7 +18,9 @@
         :label="option.label"
       />
     </select>
+    <!--        input        -->
   </div>
+  <!--        input container        -->
 </template>
 
 <script setup>

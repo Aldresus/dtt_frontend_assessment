@@ -9,13 +9,20 @@
               icon-pos="start"
               class="desktop-only text-color-white element-color-primary"
               :label="'CREATE NEW'"
-              icon="ic_plus_white@3x.png" />
+              icon="ic_plus_white@3x.png"
+            />
+            <!--        desktop create button        -->
             <ButtonComponent
               icon-pos="start"
               class="mobile-only no-bg text-color-white element-color-primary"
               icon="ic_plus_grey@3x.png"
-          /></RouterLink>
+            />
+            <!--        mobile create button        -->
+          </RouterLink>
+          <!--        create new button        -->
         </div>
+        <!--        title and create new button        -->
+
         <div class="flex flex-wrap gap-2 justify-content-between">
           <SearchBarComponent
             placeholder="Search for a house"
@@ -23,6 +30,8 @@
           />
           <SelectButtonComponent :options="sortOptions" v-model="sortBy" />
         </div>
+        <!--        search bar and sort buttons        -->
+
         <div class="flex justify-content-start">
           <h2>
             {{
@@ -32,6 +41,8 @@
             }}
           </h2>
         </div>
+        <!--        search results count        -->
+
         <RouterLink
           class="flex-column gap-1 align-items-center no-decoration text-color-primary"
           v-for="house in filteredHouses"
@@ -44,7 +55,9 @@
             @deleteHouse="deleteHouse($event)"
           />
         </RouterLink>
+        <!--        house cards        -->
       </div>
+      <!--        main container        -->
     </template>
   </MainLayout>
 </template>

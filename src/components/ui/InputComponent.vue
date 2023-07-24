@@ -1,6 +1,8 @@
 <template>
   <div class="flex-column gap-1/4">
     <label :for="id" class="input-field-title">{{ props.title }}</label>
+    <!--        Input title        -->
+
     <div
       class="flex flex-grow input-wrapper rounded element-color-tertiary-1"
       :class="{ 'input-field-invalid': !valid }"
@@ -11,6 +13,8 @@
       >
         {{ props.prefix }}
       </div>
+      <!--        input prefix        -->
+
       <input
         :id="id"
         class="input-field no-drag no-bg no-border flex-grow"
@@ -22,20 +26,28 @@
         :max="props.max"
         :required="props.required"
       />
+      <!--        input        -->
+
       <div
         v-if="props.suffix"
         class="input-field text-color-secondary flex justify-content-center align-items-center"
       >
         {{ props.suffix }}
       </div>
+      <!--        input suffix        -->
     </div>
+    <!--        Input field                                                                                   -->
+    <!--        The input is wrapped so we can have icons, prefix an suffix with a great styling        -->
+
     <div
       v-if="props.required && !valid"
       class="error-message text-color-primary"
     >
       {{ error }}
     </div>
+    <!--        input error message        -->
   </div>
+  <!--        input container        -->
 </template>
 
 <script setup>

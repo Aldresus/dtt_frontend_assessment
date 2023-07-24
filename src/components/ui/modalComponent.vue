@@ -4,11 +4,12 @@
     class="modal-background flex align-items-center justify-content-center"
   >
     <div class="bg-1 modal-card rounded">
-      <slot>
-        <!--       modal body -->
-      </slot>
+      <slot> </slot>
+      <!--       modal body -->
     </div>
+    <!--        modal card        -->
   </div>
+  <!--        modal background        -->
 </template>
 
 <script setup>

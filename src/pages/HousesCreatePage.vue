@@ -10,6 +10,8 @@
             icon="ic_back_grey@3x.png"
             type="button"
         /></RouterLink>
+        <!--        desktop back button        -->
+
         <div class="flex align-items-center justify-content-between mb-1">
           <RouterLink :to="backRoute" class="mobile-only no-decoration">
             <ButtonComponent
@@ -18,8 +20,11 @@
               icon="ic_back_grey@3x.png"
               type="button"
           /></RouterLink>
+          <!--        mobile back button        -->
           <h1>{{ isEdit ? "Edit listing" : "Create new listing" }}</h1>
         </div>
+        <!--       title and mobile back button        -->
+
         <form @submit="onPost($event)" enctype="multipart/form-data">
           <div>
             <InputComponent
@@ -29,6 +34,8 @@
               :required="true"
             />
           </div>
+          <!--        street name input       -->
+
           <div class="flex gap-1/2 flex-wrap">
             <InputComponent
               class="flex-grow"
@@ -39,13 +46,17 @@
               :required="true"
               :min="1"
             />
+            <!--        house number input       -->
             <InputComponent
               class="flex-grow"
               title="Addition (optional)"
               placeholder="e.g. A"
               v-model="housingStore.selectedHouse.location.houseNumberAddition"
             />
+            <!--        house number addition input       -->
           </div>
+          <!--        inline house number and addition input container       -->
+
           <div>
             <InputComponent
               title="Postal code*"
@@ -54,6 +65,8 @@
               :required="true"
             />
           </div>
+          <!--        postal code input       -->
+
           <div>
             <InputComponent
               title="City*"
@@ -62,6 +75,8 @@
               :required="true"
             />
           </div>
+          <!--        city input       -->
+
           <div class="my-1">
             <ImageDropzoneComponent
               title="Upload picture (PNG or JPG)*"
@@ -70,6 +85,8 @@
               :required="true"
             />
           </div>
+          <!--        image dropzone       -->
+
           <div>
             <InputComponent
               title="Price*"
@@ -81,6 +98,8 @@
               :min="1"
             />
           </div>
+          <!--        price input       -->
+
           <div class="flex flex-wrap gap-1">
             <InputComponent
               class="flex-grow w-0"
@@ -92,6 +111,8 @@
               :required="true"
               :min="1"
             />
+            <!--        size input       -->
+
             <DropdownComponent
               class="flex-grow w-0"
               title="Garage*"
@@ -100,7 +121,10 @@
               v-model="housingStore.selectedHouse.hasGarage"
               :required="true"
             />
+            <!--        garage dropdown       -->
           </div>
+          <!--        inline size and garage dropdown container       -->
+
           <div class="flex flex-wrap gap-1/2">
             <InputComponent
               class="flex-grow w-0"
@@ -111,6 +135,8 @@
               :required="true"
               :min="1"
             />
+            <!--        bedrooms input       -->
+
             <InputComponent
               class="flex-grow w-0"
               title="Bathrooms*"
@@ -120,7 +146,10 @@
               :required="true"
               :min="1"
             />
+            <!--        bathrooms input       -->
           </div>
+          <!--        inline bedrooms and bathrooms input container       -->
+
           <div>
             <InputComponent
               title="Construction year*"
@@ -132,6 +161,8 @@
               :required="true"
             />
           </div>
+          <!--        construction year input       -->
+
           <div>
             <TextAreaComponent
               title="Description*"
@@ -140,8 +171,12 @@
               :required="true"
             />
           </div>
+          <!--        description input       -->
+
           <div class="flex align-items-center gap-1 mt-1">
             <div class="flex-grow w-full"></div>
+            <!--        spacer        -->
+
             <ButtonComponent
               class="w-full flex-grow text-color-white element-color-primary"
               :label="isUploading ? '' : isEdit ? 'SAVE' : 'POST'"
@@ -149,6 +184,7 @@
               type="submit"
             />
           </div>
+          <!--        submit button       -->
         </form>
       </div>
     </template>

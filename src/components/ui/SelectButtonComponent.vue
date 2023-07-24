@@ -12,6 +12,7 @@
     >
       {{ props.options[0].label }}
     </button>
+    <!--        button for the first option        -->
 
     <button
       v-for="(option, index) in props.options.slice(
@@ -30,6 +31,7 @@
     >
       {{ option.label }}
     </button>
+    <!--        button for every intermediate options        -->
 
     <button
       class="button-padding button-behavior tabs flex-grow text-color-white right-button no-border"
@@ -48,6 +50,7 @@
     >
       {{ props.options[props.options.length - 1].label }}
     </button>
+    <!--        button for the last option        -->
   </div>
 </template>
 

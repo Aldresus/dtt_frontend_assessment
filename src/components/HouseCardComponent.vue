@@ -6,6 +6,8 @@
     @deleteHouse="deleteHouse(props.house.id)"
     @close-modal="closeModal"
   />
+  <!--        modal for deleting        -->
+
   <div class="card rounded bg-2 flex gap-1">
     <div class="image-container rounded flex justify-content-center">
       <img
@@ -14,6 +16,8 @@
         alt="house image"
       />
     </div>
+    <!--        house image        -->
+
     <div class="house-details flex-column justify-content-between flex-grow">
       <div
         :class="{
@@ -26,6 +30,8 @@
             `${props.house.location.houseNumber} ${props.house.location.street}`
           }}
         </h2>
+        <!--        house address        -->
+
         <div v-if="props.editable && props.house.madeByMe" class="flex gap-1">
           <router-link
             class="flex align-items-center"
@@ -43,13 +49,20 @@
             @click.prevent="showModal = true"
           ></ButtonComponent>
         </div>
+        <!--        edit and delete buttons        -->
       </div>
+      <!--        house address and buttons container        -->
+
       <div class="listing-info text-color-secondary">
         {{ `€ ${utils.formatPrice(props.house.price)}` }}
       </div>
+      <!--        house price        -->
+
       <div class="listing-info text-color-tertiary">
         {{ `${props.house.location.zip} ${props.house.location.city}` }}
       </div>
+      <!--        house city        -->
+
       <div class="flex gap-1 listing-info text-color-secondary">
         <div>
           <img
@@ -59,6 +72,8 @@
           />
           <span>{{ props.house.rooms.bedrooms }}</span>
         </div>
+        <!--        bedrooms        -->
+
         <div>
           <img
             class="house-icon"
@@ -67,6 +82,8 @@
           />
           <span>{{ props.house.rooms.bathrooms }}</span>
         </div>
+        <!--        bathrooms        -->
+
         <div>
           <img
             class="house-icon"
@@ -75,8 +92,11 @@
           />
           <span>{{ `${props.house.size} m2` }}</span>
         </div>
+        <!--        size        -->
       </div>
+      <!--        house rooms and size        -->
     </div>
+    <!--        house details        -->
   </div>
 </template>
 

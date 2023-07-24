@@ -7,15 +7,20 @@
     <span v-if="props.label && (props.iconPos === 'end' || !props.icon)">
       {{ props.label }}</span
     >
+    <!--        label with iconPos=>'end'        -->
+
     <img
       class="no-drag"
       v-if="props.icon"
       :src="getImageUrl()"
       alt="button icon"
     />
+    <!--        icon        -->
+
     <span v-if="props.label && props.iconPos === 'start' && props.icon">
       {{ props.label }}</span
     >
+    <!--        label with iconPos=>'start'        -->
   </button>
 </template>
 

@@ -7,6 +7,7 @@
       alt="search icon"
       class="search-icon"
     />
+    <!--        icon        -->
 
     <input
       class="search no-border w-full input-field no-bg input-field-text"
@@ -14,6 +15,8 @@
       :value="props.modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
+    <!--        input        -->
+
     <button
       v-if="props.modelValue"
       class="button-behavior no-bg no-border flex align-items-center"
@@ -25,6 +28,7 @@
         class="clear-icon"
       />
     </button>
+    <!--        clear button        -->
   </div>
 </template>
 

@@ -5,6 +5,8 @@
       src="@/assets/icons/img_logo_dtt@3x.png"
       alt="DTT logo"
     />
+    <!--        DTT logo        -->
+
     <router-link class="header-menu button-behavior no-drag" to="/houses/">
       <span class="header-text text-color-primary">Houses</span>
       <img
@@ -13,6 +15,8 @@
         alt="unselected home icon"
       />
     </router-link>
+    <!--        houses routing button        -->
+
     <router-link class="header-menu button-behavior no-drag" to="/about">
       <span class="header-text text-color-primary">About</span>
       <img
@@ -21,6 +25,7 @@
         alt="unselected home icon"
       />
     </router-link>
+    <!--        about routing button        -->
   </div>
 </template>
 

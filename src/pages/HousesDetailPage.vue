@@ -9,6 +9,8 @@
           @deleteHouse="deleteHouse($event)"
           @close-modal="closeModal"
         />
+        <!--        modal for deleting        -->
+
         <div class="flex-column gap-1/2">
           <RouterLink to="/houses" class="no-decoration">
             <ButtonComponent
@@ -18,6 +20,8 @@
               icon="ic_back_grey@3x.png"
               type="button"
           /></RouterLink>
+          <!--        desktop back button        -->
+
           <div class="flex align-items-center justify-content-between mb-1">
             <RouterLink to="/houses" class="mobile-only no-decoration">
               <ButtonComponent
@@ -26,8 +30,11 @@
                 icon="ic_back_grey@3x.png"
                 type="button"
             /></RouterLink>
+            <!--        mobile back button        -->
+
             <h1>House detail</h1>
           </div>
+          <!--       title and mobile back button        -->
 
           <div class="flex gap-2 detail-container">
             <div class="flex-column detailed-house">
@@ -40,6 +47,8 @@
                   alt="house preview"
                 />
               </div>
+              <!--        house image        -->
+
               <div class="bg-2 card house-card flex-column gap-1/2">
                 <div
                   :class="{
@@ -51,6 +60,8 @@
                       `${selectedHouse.location.houseNumber} ${selectedHouse.location.street}`
                     }}
                   </h2>
+                  <!--        house address        -->
+
                   <div v-if="selectedHouse.madeByMe" class="flex gap-1">
                     <router-link
                       class="flex align-items-center"
@@ -68,6 +79,7 @@
                       @click.prevent="showModal = true"
                     ></ButtonComponent>
                   </div>
+                  <!--        edit and delete buttons        -->
                 </div>
                 <div class="listing-info text-color-secondary">
                   <img
@@ -79,6 +91,8 @@
                     `${selectedHouse.location.zip} ${selectedHouse.location.city}`
                   }}
                 </div>
+                <!--        location        -->
+
                 <div class="flex gap-1 listing-info text-color-secondary">
                   <div>
                     <img
@@ -88,6 +102,8 @@
                     />
                     <span>{{ utils.formatPrice(selectedHouse.price) }}</span>
                   </div>
+                  <!--        price        -->
+
                   <div>
                     <img
                       class="house-icon"
@@ -96,6 +112,8 @@
                     />
                     <span>{{ `${selectedHouse.size} m2` }}</span>
                   </div>
+                  <!--        size        -->
+
                   <div>
                     <img
                       class="house-icon"
@@ -106,7 +124,10 @@
                       `Built in ${selectedHouse.constructionYear}`
                     }}</span>
                   </div>
+                  <!--        construction year        -->
                 </div>
+                <!--        price, size and construction year        -->
+
                 <div class="flex gap-1 listing-info text-color-secondary">
                   <div>
                     <img
@@ -116,6 +137,8 @@
                     />
                     <span>{{ selectedHouse.rooms.bedrooms }}</span>
                   </div>
+                  <!--        bedrooms        -->
+
                   <div>
                     <img
                       class="house-icon"
@@ -124,6 +147,8 @@
                     />
                     <span>{{ selectedHouse.rooms.bathrooms }}</span>
                   </div>
+                  <!--        bathrooms        -->
+
                   <div>
                     <img
                       class="house-icon"
@@ -132,12 +157,17 @@
                     />
                     <span>{{ selectedHouse.hasGarage ? "Yes" : "No" }}</span>
                   </div>
+                  <!--        garage        -->
                 </div>
+                <!--        bedrooms, bathrooms and garage        -->
                 <div class="text-color-secondary">
                   {{ selectedHouse.description }}
                 </div>
               </div>
+              <!--        details card        -->
             </div>
+            <!--        details        -->
+
             <div class="recommended-houses flex-column gap-1">
               <h2>Recommended for you</h2>
               <RouterLink
@@ -146,11 +176,14 @@
                 v-for="recommendedHouse in recommendedHouses"
                 :to="`/houses/${recommendedHouse.id}`"
               >
-                <HouseCardComponent :house="recommendedHouse" small
-              /></RouterLink>
+                <HouseCardComponent :house="recommendedHouse" small />
+              </RouterLink>
             </div>
+            <!--        recommended houses        -->
           </div>
+          <!--        house details main container        -->
         </div>
+        <!--        house details        -->
       </div>
     </template>
   </MainLayout>

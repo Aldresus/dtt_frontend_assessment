@@ -1,6 +1,8 @@
 <template>
   <div class="flex-column gap-1/4">
     <label :for="id" class="input-field-title">{{ props.title }}</label>
+    <!--        Input title        -->
+
     <textarea
       class="input-field element-color-tertiary-1 no-drag rounded no-border input-field-text"
       :class="{ 'input-field-invalid': !valid }"
@@ -10,10 +12,14 @@
       @input="input = $event.target.value"
       :required="props.required"
     />
+    <!--        input        -->
   </div>
+  <!--        input container        -->
+
   <div v-if="props.required && !valid" class="error-message text-color-primary">
     {{ error }}
   </div>
+  <!--        input error message        -->
 </template>
 
 <script setup>
