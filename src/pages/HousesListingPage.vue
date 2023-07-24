@@ -56,6 +56,21 @@
           />
         </RouterLink>
         <!--        house cards        -->
+
+        <div
+          v-if="houseStore.getFilteredHousesCount === 0"
+          class="h-full flex-column justify-content-center align-items-center gap-1 mt-3"
+        >
+          <img
+            class="empty-image no-drag"
+            src="@/assets/icons/img_empty_houses@3x.png"
+            alt="no houses found"
+          />
+          <div class="text-center">
+            <p>No results found.</p>
+            <p>Please try another keyword.</p>
+          </div>
+        </div>
       </div>
       <!--        main container        -->
     </template>
@@ -111,4 +126,9 @@ const sortOptions = [
 ];
 </script>
 
-<style scoped></style>
+<style scoped>
+.empty-image {
+  width: 100%;
+  max-width: 300px;
+}
+</style>
