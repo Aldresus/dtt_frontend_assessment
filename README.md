@@ -1,6 +1,6 @@
 # dtt_frontend_assessment
 
-This template should help get you started developing with Vue 3 in Vite.
+Challenge asked by DTT in order to apply for an internship.
 
 ## Recommended IDE Setup
 
